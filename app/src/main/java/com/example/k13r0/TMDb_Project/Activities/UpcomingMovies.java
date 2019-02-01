@@ -14,6 +14,8 @@ import com.example.k13r0.TMDb_Project.R;
 import com.example.k13r0.TMDb_Project.Classes.Session;
 import com.example.k13r0.TMDb_Project.Classes.Movie;
 
+import org.json.JSONArray;
+
 import java.util.ArrayList;
 
 public class UpcomingMovies extends AppCompatActivity
@@ -28,25 +30,11 @@ public class UpcomingMovies extends AppCompatActivity
         final Session guestSession = new Session(context);
 
         Movie.RetrieveUpcomingMovies(guestSession, requestQueue);
-        Movie[] upcomingMovies = guestSession.GetUpcomingMovies();
+        ArrayList<Movie> upcomingArray = guestSession.GetUpcomingMovies();
+        MovieAdapter movieAdapter = new MovieAdapter(context, R.layout.upcoming_row, upcomingArray);
 
         ListView upcomingList = findViewById(android.R.id.list);
-
-        ArrayList<Movie> upcomingArray = new ArrayList<>();
-
-        int upcomingIndex = 0;
-        for (upcomingIndex = 0; upcomingIndex < upcomingMovies.length; upcomingIndex++)
-        {
-            upcomingArray.add(upcomingMovies[upcomingIndex]);;
-        }
-
-        int test1 = upcomingIndex;
-        int test2 = upcomingArray.size();
-        MovieAdapter movieAdapter = new MovieAdapter(context, R.layout.upcoming_row, upcomingArray);
-        int test = movieAdapter.getCount();
         upcomingList.setAdapter(movieAdapter);
-
     }
-
 }
 

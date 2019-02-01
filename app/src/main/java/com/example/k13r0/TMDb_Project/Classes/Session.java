@@ -15,6 +15,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+
 public class Session extends Activity
 {
     private SharedPreferences sharedPreferences;
@@ -100,28 +102,28 @@ public class Session extends Activity
         sharedPreferences.edit().putString("RandomMovie", movieDetails.toString()).commit();
     }
 
-    public Movie[] GetUpcomingMovies()
+    public ArrayList<Movie> GetUpcomingMovies()
     {
-        JSONObject latestMoviesObject = new JSONObject();
-        JSONArray latestMoviesArray = new JSONArray();
-        Movie currentMovie = new Movie();
-
-        Movie[] latestMovies = new Movie[10];
+        int numMovies = 0;
+        JSONObject latestMoviesObject;
+        JSONArray latestMoviesArray;
+        ArrayList latestMovies = new ArrayList();
 
         try
         {
             latestMoviesObject = new JSONObject(sharedPreferences.getString("UpcomingMovies",""));
             latestMoviesArray = latestMoviesObject.getJSONArray("results");
-            for (int upcomingCounter = 0; upcomingCounter < 10; upcomingCounter++)
+            numMovies = latestMoviesArray.length();
+
+            for (int upcomingCounter = 0; upcomingCounter < numMovies; upcomingCounter++)
             {
-                latestMovies[upcomingCounter] = new Movie(latestMoviesArray.getJSONObject(upcomingCounter));
+                latestMovies.add(new Movie(latestMoviesArray.getJSONObject(upcomingCounter)));
             }
         }
         catch (JSONException exception)
         {
             Log.d("CurrentMovieJSONFAIL", exception.toString());
         }
-
 
         return latestMovies;
     }

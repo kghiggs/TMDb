@@ -47,6 +47,7 @@ public class RandomMovieTest extends AppCompatActivity
             @Override
             public void onClick(View v)
             {
+
                 Movie.GetRandomMovie(guestSession, requestQueue);
                 Movie randomMovie = guestSession.GetRandomMovieObject();
 
