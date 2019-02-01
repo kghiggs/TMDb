@@ -203,7 +203,7 @@ public class SearchMovies extends AppCompatActivity implements View.OnClickListe
                             @Override
                             public void onErrorResponse(VolleyError error)
                             {
-                                Log.d("LatestMoviesCONNERR", error.toString());
+                                Log.d("SearchMoviesCONNERR", error.toString());
                             }
                         }
                 );
