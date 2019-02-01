@@ -22,7 +22,7 @@
         </activity>
         <activity
             android:name="com.example.k13r0.TMDb_Project.Activities.SearchMovies"
-            android:windowSoftInputMode="adjustResize"
+
             >
 
 

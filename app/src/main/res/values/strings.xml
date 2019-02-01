@@ -3,4 +3,5 @@
     <string name="search_for_movie">Search for Movie</string>
     <string name="search_results">Search Results</string>
     <string name="movie_to_search_for">Movie to search for</string>
+    <string name="back">Back</string>
 </resources>
