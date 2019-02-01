@@ -18,6 +18,7 @@ import com.example.k13r0.TMDb_Project.Activities.SearchMovies;
 import com.example.k13r0.TMDb_Project.Activities.UpcomingMovies;
 import com.example.k13r0.TMDb_Project.Activities.RandomMovieTest;
 
+import com.example.k13r0.TMDb_Project.Classes.Movie;
 import com.example.k13r0.TMDb_Project.Classes.Session;
 
 
@@ -45,7 +46,7 @@ public class MainActivity extends AppCompatActivity
 
         guestSession.SetAPIKey("27fc45ada92ace137689b2c3ddb1c6d0");
         guestSession.GetGSID(requestQueue);
-
+        Movie.RetrieveUpcomingMovies(guestSession, requestQueue);
 
 
 
