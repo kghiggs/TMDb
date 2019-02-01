@@ -36,7 +36,7 @@ public class RandomMovieTest extends AppCompatActivity
         final ImageView randomPoster = findViewById(R.id.randomPoster);
         String titleAndYear = "";
 
-        Button randomButton = findViewById(R.id.searchButton);
+        Button randomButton = findViewById(R.id.randomButton);
         randomButton.setOnClickListener(new View.OnClickListener()
         {
             @Override
