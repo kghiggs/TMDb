@@ -1,7 +1,7 @@
 /*
  *
- * Author		: Kieron Higgs
- * Date			: Jan. 31, 2019
+ * Author		:
+ * Date			:
  * Project		: Assignment 1
  * File			: About.java
  * Description	:
@@ -12,6 +12,8 @@ package com.example.k13r0.TMDb_Project.Activities;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+
+import com.example.k13r0.TMDb_Project.R;
 
 public class About extends AppCompatActivity {
 

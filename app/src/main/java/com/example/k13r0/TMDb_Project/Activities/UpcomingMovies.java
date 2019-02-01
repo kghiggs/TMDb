@@ -20,6 +20,7 @@ import com.android.volley.toolbox.Volley;
 import com.example.k13r0.TMDb_Project.Classes.MovieAdapter;
 import com.example.k13r0.TMDb_Project.Classes.Session;
 import com.example.k13r0.TMDb_Project.Classes.Movie;
+import com.example.k13r0.TMDb_Project.R;
 
 import java.util.ArrayList;
 
@@ -45,7 +46,7 @@ public class UpcomingMovies extends AppCompatActivity
         Movie.RetrieveUpcomingMovies(guestSession, requestQueue);
 
         upcomingArray = guestSession.GetUpcomingMovies();
-        movieAdapter = new MovieAdapter(context, R.layout.upcoming_row, upcomingArray);
+        movieAdapter = new MovieAdapter(context, R.layout.list_row, upcomingArray);
 
         upcomingList = findViewById(android.R.id.list);
         upcomingList.setAdapter(movieAdapter);

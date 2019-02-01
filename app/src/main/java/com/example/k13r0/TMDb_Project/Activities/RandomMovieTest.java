@@ -22,6 +22,8 @@ import com.android.volley.toolbox.Volley;
 
 import com.example.k13r0.TMDb_Project.Classes.Movie;
 import com.example.k13r0.TMDb_Project.Classes.Session;
+import com.example.k13r0.TMDb_Project.R;
+
 import com.squareup.picasso.Picasso;
 
 import java.text.SimpleDateFormat;

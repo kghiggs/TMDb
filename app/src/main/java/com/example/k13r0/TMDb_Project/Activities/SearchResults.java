@@ -19,6 +19,7 @@ import com.android.volley.toolbox.Volley;
 import com.example.k13r0.TMDb_Project.Classes.MovieAdapter;
 import com.example.k13r0.TMDb_Project.Classes.Session;
 import com.example.k13r0.TMDb_Project.Classes.Movie;
+import com.example.k13r0.TMDb_Project.R;
 
 import java.util.ArrayList;
 
@@ -42,7 +43,7 @@ public class SearchResults extends AppCompatActivity
         guestSession = new Session(context);
 
         resultsArray = guestSession.GetSearchResults();
-        movieAdapter = new MovieAdapter(context, R.layout.upcoming_row, resultsArray);
+        movieAdapter = new MovieAdapter(context, R.layout.list_row, resultsArray);
 
         resultsList = findViewById(android.R.id.list);
         resultsList.setAdapter(movieAdapter);

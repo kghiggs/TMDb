@@ -9,6 +9,7 @@
 
 
 package com.example.k13r0.TMDb_Project.Classes;
+import com.example.k13r0.TMDb_Project.R;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -56,7 +57,7 @@ public class MovieAdapter extends ArrayAdapter<Movie>
         // Will be null the first time the view is instantiated; prevents re-instantiation (resource waste)
         if (convertView == null)
         {
-            convertView = LayoutInflater.from(context).inflate(R.layout.upcoming_row, parent, false);
+            convertView = LayoutInflater.from(context).inflate(R.layout.list_row, parent, false);
         }
         TextView titleAndYear = convertView.findViewById(R.id.titleAndYear);
         TextView moreInfo = convertView.findViewById(R.id.moreInfo);
