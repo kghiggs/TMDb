@@ -1,14 +1,11 @@
 /*
  *
- * Author		: Arie Kraayenbrink
+ * Author		: Arie Kraayenbrink, Kieron Higgs
  * Date			: Jan. 31, 2019
  * Project		: Assignment 1
  * File			: SearchMovies.java
  * Description	: This file contains the SearchMovies class. It allows the user to search for a movie.
- * Credit		:
  */
-
-
 
 package com.example.k13r0.TMDb_Project.Activities;
 

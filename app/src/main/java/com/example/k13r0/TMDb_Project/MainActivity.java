@@ -1,5 +1,13 @@
-package com.example.k13r0.TMDb_Project;
+/*
+ *
+ * Author		: Kieron Higgs
+ * Date			: Jan. 25, 2019
+ * Project		: Assignment 1
+ * File			: MainActivity.java
+ * Description	: The main page of the TMDb app. Displays buttons to test methods for finding movies based on different criteria.
+ */
 
+package com.example.k13r0.TMDb_Project;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;

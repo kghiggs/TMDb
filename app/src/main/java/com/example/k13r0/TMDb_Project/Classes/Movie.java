@@ -1,3 +1,12 @@
+/*
+ *
+ * Author		: Kieron Higgs
+ * Date			: Jan. 25, 2019
+ * Project		: Assignment 1
+ * File			: Movie.java
+ * Description	: Models a movie onto a Java object, including methods for different types of queries for movies.
+ */
+
 package com.example.k13r0.TMDb_Project.Classes;
 
 import android.util.Log;

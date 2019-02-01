@@ -1,3 +1,13 @@
+/*
+ *
+ * Author		: Kieron Higgs
+ * Date			: Jan. 24, 2019
+ * Project		: Assignment 1
+ * File			: UpcomingMovies.java
+ * Description	: Contains the code used to display upcoming movies in a ListView with text and images.
+ * Credit		:
+ */
+
 package com.example.k13r0.TMDb_Project.Activities;
 
 import android.content.Context;

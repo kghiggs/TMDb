@@ -1,8 +1,11 @@
-// FILENAME:
-// PROJECT:  PROG3150_MAD - Assignment #1
-// BY: Kieron Higgs
-// DATE: 01-24-2019
-// DESCRIPTION:
+/*
+ *
+ * Author		: Kieron Higgs
+ * Date			: Jan. 25, 2019
+ * Project		: Assignment 1
+ * File			: JsonObjectRequest.java
+ * Description	: Used to make an HTTP request for a JSON object and decode the respoonse.
+ */
 
 package com.example.k13r0.TMDb_Project.Classes;
 

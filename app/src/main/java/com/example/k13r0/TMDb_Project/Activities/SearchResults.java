@@ -1,3 +1,12 @@
+/*
+ *
+ * Author		: Kieron Higgs
+ * Date			: Jan. 31, 2019
+ * Project		: Assignment 1
+ * File			: SearchResults.java
+ * Description	: Contains the code which facilitates displaying a list of search results.
+ */
+
 package com.example.k13r0.TMDb_Project.Activities;
 
 import android.content.Context;
@@ -10,8 +19,6 @@ import com.android.volley.toolbox.Volley;
 import com.example.k13r0.TMDb_Project.Classes.MovieAdapter;
 import com.example.k13r0.TMDb_Project.Classes.Session;
 import com.example.k13r0.TMDb_Project.Classes.Movie;
-
-import org.json.JSONArray;
 
 import java.util.ArrayList;
 

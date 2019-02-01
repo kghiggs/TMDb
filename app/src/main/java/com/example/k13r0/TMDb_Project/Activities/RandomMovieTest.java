@@ -1,3 +1,12 @@
+/*
+ *
+ * Author		: Kieron Higgs
+ * Date			: Jan. 25, 2019
+ * Project		: Assignment 1
+ * File			: RandomMovieTest.java
+ * Description	: Contains the code which generates a page for a single random movie, including title, overview, and poster image.
+ */
+
 package com.example.k13r0.TMDb_Project.Activities;
 
 import android.content.Context;

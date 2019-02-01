@@ -1,3 +1,13 @@
+/*
+ *
+ * Author		: Kieron Higgs
+ * Date			: Jan. 25, 2019
+ * Project		: Assignment 1
+ * File			: MovieAdapter.java
+ * Description	: The adapter used to convert JSON into Movie objects held within ArrayLists and display them.
+ */
+
+
 package com.example.k13r0.TMDb_Project.Classes;
 
 import android.content.Context;
