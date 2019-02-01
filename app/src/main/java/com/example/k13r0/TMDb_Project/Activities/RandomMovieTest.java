@@ -10,9 +10,9 @@ import android.widget.TextView;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.Volley;
+
 import com.example.k13r0.TMDb_Project.Classes.Movie;
 import com.example.k13r0.TMDb_Project.Classes.Session;
-import com.example.k13r0.TMDb_Project.R;
 import com.squareup.picasso.Picasso;
 
 import java.text.SimpleDateFormat;
@@ -61,7 +61,6 @@ public class RandomMovieTest extends AppCompatActivity
                     String titleAndYear = randomMovie.title + " (" + year.format(randomMovie.releaseDate) + ")";
                     randomMovieTitle.setText(titleAndYear);
                 }
-
 
                 //TextView randomReleaseDate = findViewById(R.id.randomReleaseDate);
                 //randomReleaseDate.setText(randomMovie.releaseDate.toString());

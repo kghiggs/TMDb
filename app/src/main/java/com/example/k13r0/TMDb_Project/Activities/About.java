@@ -10,8 +10,6 @@ package com.example.k13r0.TMDb_Project.Activities;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
-import com.example.k13r0.TMDb_Project.R;
-
 public class About extends AppCompatActivity {
 
     @Override

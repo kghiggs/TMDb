@@ -27,19 +27,18 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toolbar;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.Volley;
+
 import com.example.k13r0.TMDb_Project.Classes.JsonObjectRequest;
 import com.example.k13r0.TMDb_Project.Classes.Movie;
 import com.example.k13r0.TMDb_Project.Classes.MovieAdapter;
 import com.example.k13r0.TMDb_Project.Classes.Session;
 import com.example.k13r0.TMDb_Project.MainActivity;
-import com.example.k13r0.TMDb_Project.R;
 
 import org.json.JSONObject;
 

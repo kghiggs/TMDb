@@ -8,7 +8,6 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.k13r0.TMDb_Project.R;
 import com.squareup.picasso.Picasso;
 
 import java.text.SimpleDateFormat;

@@ -1,17 +1,12 @@
 package com.example.k13r0.TMDb_Project.Classes;
 
 import android.util.Log;
-import android.view.View;
-
-import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.squareup.picasso.Picasso;
 
-import org.json.JSONArray;
 import org.json.JSONObject;
 import org.json.JSONException;
 
