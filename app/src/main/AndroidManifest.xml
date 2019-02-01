@@ -10,14 +10,21 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
+
         <activity android:name="com.example.k13r0.TMDb_Project.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
-        <activity android:name="com.example.k13r0.TMDb_Project.Activities.SearchMovies">
+        <activity
+            android:name="com.example.k13r0.TMDb_Project.Activities.SearchMovies"
+            android:windowSoftInputMode="adjustResize"
+            >
+
 
         </activity>
         <activity android:name="com.example.k13r0.TMDb_Project.Activities.UpcomingMovies" android:label="Upcoming Movies"
