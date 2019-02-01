@@ -23,6 +23,9 @@
         <activity android:name="com.example.k13r0.TMDb_Project.Activities.SearchMovies" android:label="Search Movies">
         </activity>
 
+        <activity android:name="com.example.k13r0.TMDb_Project.Activities.SearchResults" android:label="Search Results">
+        </activity>
+
         <activity android:name="com.example.k13r0.TMDb_Project.Activities.RandomMovieTest" android:label="Random Movies">
         </activity>
 

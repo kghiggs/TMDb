@@ -48,49 +48,6 @@ public class MainActivity extends AppCompatActivity
         guestSession.GetGSID(requestQueue);
         Movie.RetrieveUpcomingMovies(guestSession, requestQueue);
 
-
-
-        // final Bitmap bitmap = BitmapFactory.decodeFile("/sdcard/image.jpg");
-
-        /*
-        String MovieDetailURL= "https://api.themoviedb.org/3/search/movie?api_key=" + guestSession.GetAPIKey() + "&language=en-US&query=Blade%20Runner&page=1&include_adult=false";
-        JsonObjectRequest requestMovieDetails = new JsonObjectRequest(Request.Method.GET, MovieDetailURL, null,
-
-            new Response.Listener<JSONObject>()
-            {
-                @Override
-                public void onResponse(JSONObject response)
-                {
-                    try
-                    {
-                        JSONArray results = response.getJSONArray("results");
-                        Movie movie = new Movie(results, false);
-
-                        Log.d("MovieDetailSUCCESS", response.toString());
-                    }
-                    catch(JSONException exception)
-                    {
-                        Log.d("MovieDetailJSONFAIL", exception.toString());
-                    }
-                }
-            },
-            new Response.ErrorListener()
-            {
-                @Override
-                public void onErrorResponse(VolleyError error)
-                {
-                    Log.d("MovieDetailConnErr", error.toString());
-                }
-            }
-        );
-        requestQueue.add(requestMovieDetails);
-        */
-
-
-        //TextView randomReleaseDate = findViewById(R.id.randomReleaseDate);
-        //randomReleaseDate.setText(randomMovie.releaseDate.toString());
-
-
         Button searchButton = findViewById(R.id.searchButton);
         searchButton.setOnClickListener(new View.OnClickListener()
         {

@@ -12,23 +12,38 @@
 
 package com.example.k13r0.TMDb_Project.Activities;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toolbar;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.Volley;
+import com.example.k13r0.TMDb_Project.Classes.JsonObjectRequest;
+import com.example.k13r0.TMDb_Project.Classes.Movie;
+import com.example.k13r0.TMDb_Project.Classes.MovieAdapter;
+import com.example.k13r0.TMDb_Project.Classes.Session;
 import com.example.k13r0.TMDb_Project.MainActivity;
 import com.example.k13r0.TMDb_Project.R;
 
+import org.json.JSONObject;
+
+import java.util.ArrayList;
 
 
 /*
@@ -37,11 +52,18 @@ import com.example.k13r0.TMDb_Project.R;
  */
 public class SearchMovies extends AppCompatActivity implements View.OnClickListener
 {
+    private Context context;
+    private RequestQueue requestQueue;
+    private Session guestSession;
+
     private EditText txtMovieSearch;
     private Button btnSearch;
     private TextView txtResults;
+    private String query;
 
-
+    private ListView resultsList;
+    private ArrayList<Movie> resultsArray;
+    private MovieAdapter movieAdapter;
 
     /*
      * Function		: onCreate
@@ -55,10 +77,15 @@ public class SearchMovies extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
 
+        context = getApplicationContext();
+        guestSession = new Session(context);
+        requestQueue = Volley.newRequestQueue(this);
+
         txtMovieSearch = findViewById(R.id.txtSearch);
         btnSearch = findViewById(R.id.btnSearch);
         txtResults = findViewById(R.id.txtSearchResults);
-
+        resultsList = findViewById(R.id.list);
+        resultsArray = new ArrayList();
         txtMovieSearch.addTextChangedListener(searchTextWatcher);
 
         btnSearch.setOnClickListener(this);
@@ -157,7 +184,32 @@ public class SearchMovies extends AppCompatActivity implements View.OnClickListe
         switch (v.getId())
         {
             case R.id.btnSearch:
-                txtResults.setVisibility(View.VISIBLE);
+                query = txtMovieSearch.getText().toString();
+                String HTMLquery = query.replaceAll(" ", "%20");
+                String LatestMovieURL = "https://api.themoviedb.org/3/search/movie?api_key=" + guestSession.GetAPIKey() + "&language=en-US&page=1" + "&query=" + HTMLquery + "&include_adult=false";
+
+                JsonObjectRequest requestLatestMovie = new JsonObjectRequest(Request.Method.GET, LatestMovieURL, null,
+
+                        new Response.Listener<JSONObject>()
+                        {
+                            @Override
+                            public void onResponse(JSONObject searchResults)
+                            {
+                                guestSession.SetSearchMoviesString(searchResults);
+                                Movie.RetrieveSearchResults(guestSession, requestQueue, query);
+                                startActivity(new Intent(SearchMovies.this, SearchResults.class));
+                            }
+                        },
+                        new Response.ErrorListener()
+                        {
+                            @Override
+                            public void onErrorResponse(VolleyError error)
+                            {
+                                Log.d("LatestMoviesCONNERR", error.toString());
+                            }
+                        }
+                );
+                requestQueue.add(requestLatestMovie);
                 break;
         }
     }

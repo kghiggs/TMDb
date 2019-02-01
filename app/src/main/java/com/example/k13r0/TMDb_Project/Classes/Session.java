@@ -132,4 +132,35 @@ public class Session extends Activity
     {
         sharedPreferences.edit().putString("UpcomingMovies", latestMovies.toString()).commit();
     }
+
+    public void SetSearchMoviesString(JSONObject searchResults)
+    {
+        sharedPreferences.edit().putString("SearchMovies", searchResults.toString()).commit();
+    }
+
+    public ArrayList<Movie> GetSearchResults()
+    {
+        int numMovies = 0;
+        JSONObject latestMoviesObject;
+        JSONArray latestMoviesArray;
+        ArrayList latestMovies = new ArrayList();
+
+        try
+        {
+            latestMoviesObject = new JSONObject(sharedPreferences.getString("SearchMovies",""));
+            latestMoviesArray = latestMoviesObject.getJSONArray("results");
+            numMovies = latestMoviesArray.length();
+
+            for (int upcomingCounter = 0; upcomingCounter < numMovies; upcomingCounter++)
+            {
+                latestMovies.add(new Movie(latestMoviesArray.getJSONObject(upcomingCounter)));
+            }
+        }
+        catch (JSONException exception)
+        {
+            Log.d("CurrentMovieJSONFAIL", exception.toString());
+        }
+
+        return latestMovies;
+    }
 }

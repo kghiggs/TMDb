@@ -22,6 +22,7 @@ public class RandomMovieTest extends AppCompatActivity
     private Context context;
     private RequestQueue requestQueue;
     private Session guestSession;
+
     private TextView randomMovieTitle;
     private TextView randomOverview;
     private ImageView randomPoster;

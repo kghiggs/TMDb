@@ -20,20 +20,29 @@ import java.util.ArrayList;
 
 public class UpcomingMovies extends AppCompatActivity
 {
+    private Context context;
+    private RequestQueue requestQueue;
+    private Session guestSession;
+
+    private ListView upcomingList;
+    private ArrayList<Movie> upcomingArray;
+    private MovieAdapter movieAdapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_upcoming);
-        Context context = getApplicationContext();
-        final RequestQueue requestQueue = Volley.newRequestQueue(this);
-        final Session guestSession = new Session(context);
+        context = getApplicationContext();
+        requestQueue = Volley.newRequestQueue(this);
+        guestSession = new Session(context);
 
         Movie.RetrieveUpcomingMovies(guestSession, requestQueue);
-        ArrayList<Movie> upcomingArray = guestSession.GetUpcomingMovies();
-        MovieAdapter movieAdapter = new MovieAdapter(context, R.layout.upcoming_row, upcomingArray);
 
-        ListView upcomingList = findViewById(android.R.id.list);
+        upcomingArray = guestSession.GetUpcomingMovies();
+        movieAdapter = new MovieAdapter(context, R.layout.upcoming_row, upcomingArray);
+
+        upcomingList = findViewById(android.R.id.list);
         upcomingList.setAdapter(movieAdapter);
     }
 }

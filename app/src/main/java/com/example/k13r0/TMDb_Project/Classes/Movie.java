@@ -189,4 +189,31 @@ public class Movie
         );
         requestQueue.add(requestLatestMovie);
     }
+
+    public static void RetrieveSearchResults(final Session guestSession, final RequestQueue requestQueue, String query)
+    {
+        String HTMLquery = query.replaceAll(" ", "%20");
+        String LatestMovieURL = "https://api.themoviedb.org/3/search/movie?api_key=" + guestSession.GetAPIKey() + "&language=en-US&page=1" + "&query=" + HTMLquery + "&include_adult=false";
+
+        JsonObjectRequest requestLatestMovie = new JsonObjectRequest(Request.Method.GET, LatestMovieURL, null,
+
+                new Response.Listener<JSONObject>()
+                {
+                    @Override
+                    public void onResponse(JSONObject searchResults)
+                    {
+                        guestSession.SetSearchMoviesString(searchResults);
+                    }
+                },
+                new Response.ErrorListener()
+                {
+                    @Override
+                    public void onErrorResponse(VolleyError error)
+                    {
+                        Log.d("LatestMoviesCONNERR", error.toString());
+                    }
+                }
+        );
+        requestQueue.add(requestLatestMovie);
+    }
 }
