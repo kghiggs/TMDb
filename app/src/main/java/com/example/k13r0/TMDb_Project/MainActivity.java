@@ -9,8 +9,6 @@ import android.app.Activity;
 import android.view.View;
 
 import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.android.volley.toolbox.Volley;
 import com.android.volley.RequestQueue;
