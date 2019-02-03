@@ -6,12 +6,33 @@
     File	    : activity_about.xml
     Description :
 -->
-<Constrant
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:orientation="horizontal"
-    tools:context=".Activities.About"
-    android:id="@+id/OtherActivity3">
-</Constrant>
+    android:id="@+id/aboutPage"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimaryDark">
+
+    <TextView
+        android:id="@+id/aboutText"
+        android:layout_width="294dp"
+        android:layout_height="200dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
+        android:gravity="center"
+        android:textColor="@color/colorBackgroundLight"
+        android:lines="9"
+        android:text="TMDb App v0.1.\nFebruary 2, 2019\n\nDevelopers:\nKieron Higgs\nArie Kraayenbrink\n Bailey Mills\nKyle Horsley"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:background="@color/colorPrimaryDark"
+        tools:ignore="HardcodedText" />
+</android.support.constraint.ConstraintLayout>

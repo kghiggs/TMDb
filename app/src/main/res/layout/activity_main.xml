@@ -12,48 +12,50 @@
     android:id="@+id/mainActivity"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
+    tools:background="@style/AppTheme"
     tools:context=".MainActivity">
 
 
     <Button
         android:id="@+id/aboutButton"
+        style="@style/buttonStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="About"
         app:layout_constraintStart_toStartOf="parent"
-        tools:ignore="MissingConstraints"
-        style="@style/buttonStyle" />
+        tools:ignore="MissingConstraints" />
 
     <Button
         android:id="@+id/searchButton"
+        style="@style/buttonStyle"
         android:layout_width="100dp"
         android:layout_height="60dp"
         android:layout_marginBottom="12dp"
         android:text="Search Movies"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/randomMovieButton"
-        app:layout_constraintStart_toStartOf="parent"
-        style="@style/buttonStyle" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/randomMovieButton"
+        style="@style/buttonStyle"
         android:layout_width="100dp"
         android:layout_height="60dp"
         android:text="Random Movies"
         app:layout_constraintEnd_toStartOf="@+id/upcomingButton"
         app:layout_constraintStart_toEndOf="@+id/searchButton"
-        app:layout_constraintTop_toTopOf="@+id/searchButton"
-        style="@style/buttonStyle" />
+        app:layout_constraintTop_toTopOf="@+id/searchButton" />
 
     <Button
         android:id="@+id/upcomingButton"
+        style="@style/buttonStyle"
         android:layout_width="100dp"
         android:layout_height="60dp"
         android:text="Upcoming Movies"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/randomMovieButton"
-        app:layout_constraintTop_toTopOf="@+id/searchButton"
-        style="@style/buttonStyle" />
+        app:layout_constraintTop_toTopOf="@+id/searchButton" />
 
     <TextView
         android:id="@+id/version"
