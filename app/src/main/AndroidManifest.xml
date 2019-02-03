@@ -32,7 +32,7 @@
         <activity android:name="com.example.k13r0.TMDb_Project.Activities.UpcomingMovies" android:label="Upcoming Movies">
         </activity>
 
-        <activity android:name="com.example.k13r0.TMDb_Project.Activities.About" android:label="About" android:theme="@style/AppTheme.PopUpTheme">
+        <activity android:name="com.example.k13r0.TMDb_Project.Activities.About" android:label="About" android:theme="@style/PopUpTheme">
         </activity>
 
     </application>
