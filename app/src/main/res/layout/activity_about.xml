@@ -12,12 +12,12 @@
     android:id="@+id/mainActivity"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/holo_blue_dark"
-    tools:context=".MainActivity">>
+    android:background="@color/colorPrimaryDark"
+    tools:context=".MainActivity">
 
     <TextView
         android:id="@+id/aboutText"
-        android:layout_width="193dp"
+        android:layout_width="294dp"
         android:layout_height="200dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
@@ -26,14 +26,14 @@
         android:layout_marginRight="8dp"
         android:layout_marginBottom="8dp"
         android:gravity="center"
-        android:soundEffectsEnabled="true"
-        android:text="TMDb App v0.1.   February 2, 2019 Developers:       Kieron Higgs         Arie Kraayenbrink Bailey Mills           Kyle Horsley"
-        android:textDirection="firstStrongLtr"
+        android:textColor="@color/colorBackgroundLight"
+        android:lines="9"
+        android:text="TMDb App v0.1.\nFebruary 2, 2019\n\nDevelopers:\nKieron Higgs\nArie Kraayenbrink\n Bailey Mills\nKyle Horsley"
         android:textSize="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:background="@android:color/holo_blue_dark"
+        tools:background="@color/colorPrimaryDark"
         tools:ignore="HardcodedText" />
 </android.support.constraint.ConstraintLayout>
