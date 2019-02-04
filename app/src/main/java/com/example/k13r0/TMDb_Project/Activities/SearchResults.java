@@ -16,9 +16,9 @@ import android.widget.ListView;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.Volley;
-import com.example.k13r0.TMDb_Project.Classes.MovieAdapter;
-import com.example.k13r0.TMDb_Project.Classes.Session;
-import com.example.k13r0.TMDb_Project.Classes.Movie;
+import com.example.k13r0.TMDb_Project.Utilities.MovieAdapter;
+import com.example.k13r0.TMDb_Project.Utilities.Session;
+import com.example.k13r0.TMDb_Project.Utilities.Movie;
 import com.example.k13r0.TMDb_Project.R;
 
 import java.util.ArrayList;
@@ -37,6 +37,12 @@ public class SearchResults extends AppCompatActivity
     private ArrayList<Movie> resultsArray;
     private MovieAdapter movieAdapter;
 
+    /*
+     * Function		: onCreate
+     * Description	: Displays the results of a search in a ListView using the MovieAdapter.
+     * Parameters	: Bundle savedInstanceState
+     * Returns		: N/A
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {

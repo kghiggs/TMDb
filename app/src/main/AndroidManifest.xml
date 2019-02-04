@@ -19,7 +19,7 @@
         android:theme="@style/AppTheme">
 
 
-        <activity android:name="com.example.k13r0.TMDb_Project.MainActivity">
+        <activity android:name="com.example.k13r0.TMDb_Project.Activities.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

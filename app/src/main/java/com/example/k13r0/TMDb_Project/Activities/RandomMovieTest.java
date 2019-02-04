@@ -20,8 +20,8 @@ import android.widget.TextView;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.Volley;
 
-import com.example.k13r0.TMDb_Project.Classes.Movie;
-import com.example.k13r0.TMDb_Project.Classes.Session;
+import com.example.k13r0.TMDb_Project.Utilities.Movie;
+import com.example.k13r0.TMDb_Project.Utilities.Session;
 import com.example.k13r0.TMDb_Project.R;
 
 import com.squareup.picasso.Picasso;
@@ -43,6 +43,13 @@ public class RandomMovieTest extends AppCompatActivity
     private ImageView randomPoster;
     private Button randomButton;
 
+    /*
+     * Function		: onCreate
+     * Description	: Requests a random page from the database and displays information relating to it; allows user to
+     *                repeat the process with the press of a button.
+     * Parameters	: Bundle savedInstanceState
+     * Returns		: N/A
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {

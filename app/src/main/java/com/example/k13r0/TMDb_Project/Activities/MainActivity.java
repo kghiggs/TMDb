@@ -7,7 +7,7 @@
  * Description	: The main page of the TMDb app. Displays buttons to test methods for finding movies based on different criteria.
  */
 
-package com.example.k13r0.TMDb_Project;
+package com.example.k13r0.TMDb_Project.Activities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -21,13 +21,9 @@ import android.widget.Button;
 import com.android.volley.toolbox.Volley;
 import com.android.volley.RequestQueue;
 
-import com.example.k13r0.TMDb_Project.Activities.About;
-import com.example.k13r0.TMDb_Project.Activities.SearchMovies;
-import com.example.k13r0.TMDb_Project.Activities.UpcomingMovies;
-import com.example.k13r0.TMDb_Project.Activities.RandomMovieTest;
-
-import com.example.k13r0.TMDb_Project.Classes.Movie;
-import com.example.k13r0.TMDb_Project.Classes.Session;
+import com.example.k13r0.TMDb_Project.Utilities.Movie;
+import com.example.k13r0.TMDb_Project.Utilities.Session;
+import com.example.k13r0.TMDb_Project.R;
 
 /*
  * Class		: MainActivity
@@ -40,10 +36,15 @@ public class MainActivity extends AppCompatActivity
     public Context mainContext;
     public View mainActivityView;
 
+    /*
+     * Function		: onCreate
+     * Description	: Connects to TMDb and connects the XML with the code-behind for the MainActivity.
+     * Parameters	: Bundle savedInstanceState
+     * Returns		: N/A
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 

@@ -16,9 +16,9 @@ import android.widget.ListView;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.Volley;
-import com.example.k13r0.TMDb_Project.Classes.MovieAdapter;
-import com.example.k13r0.TMDb_Project.Classes.Session;
-import com.example.k13r0.TMDb_Project.Classes.Movie;
+import com.example.k13r0.TMDb_Project.Utilities.MovieAdapter;
+import com.example.k13r0.TMDb_Project.Utilities.Session;
+import com.example.k13r0.TMDb_Project.Utilities.Movie;
 import com.example.k13r0.TMDb_Project.R;
 
 import java.util.ArrayList;
@@ -37,6 +37,12 @@ public class UpcomingMovies extends AppCompatActivity
     private ArrayList<Movie> upcomingArray;
     private MovieAdapter movieAdapter;
 
+    /*
+     * Function		: onCreate
+     * Description	: Requests a list of new and upcoming movies from the database and displays them in a ListView.
+     * Parameters	: Bundle savedInstanceState
+     * Returns		: N/A
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {

@@ -7,7 +7,7 @@
  * Description	: Models a movie onto a Java object, including methods for different types of queries for movies.
  */
 
-package com.example.k13r0.TMDb_Project.Classes;
+package com.example.k13r0.TMDb_Project.Utilities;
 
 import android.util.Log;
 
@@ -25,7 +25,7 @@ import java.text.SimpleDateFormat;
 import java.text.ParseException;
 
 /*
- * Class		: SearchMovies
+ * Class		: Movie
  * Description	: This class is used to model a movie using object-oriented programming principles.
  */
 public class Movie
@@ -61,11 +61,10 @@ public class Movie
     public double voteAverage;
     public double GetVoteAverage() { return this.voteAverage; }
 
-    public interface ServerCallback
-    {
-        void onSuccess(JSONObject result);
-    }
-
+    /*
+     * Constructor	: Movie()
+     * Description	: Default constructor for the movie class.
+     */
     public Movie()
     {
         ID = -1;
@@ -80,7 +79,11 @@ public class Movie
         voteAverage = 0;
     }
 
-    // Get movie based on an array of search results, using data from the first (most relevant) result at index 0.
+    /*
+     * Constructor	: Movie()
+     * Description	: Instantiates a movie object based on a JSON string containing the data which will fill its attributes
+     * Parameters   : JSONObject details - the JSON which contains the movie details
+     */
     public Movie(JSONObject details)
     {
         try
@@ -107,7 +110,13 @@ public class Movie
 
     }
 
-    // Get random movie
+    /*
+     * Constructor	: GetRandomMovie()
+     * Description	: Queries the database for a random movie based on a randomly generated movie ID.
+     * Parameters   : final Session guestSession - The session object containing the API key
+     *                final RequestQueue requestQueue - The Volley RequestQueue used for sending HTTP messages
+     * Return:      : N/A
+     */
     public static void GetRandomMovie(final Session guestSession, final RequestQueue requestQueue)
     {
         String LatestMovieURL = "https://api.themoviedb.org/3/movie/latest?api_key=" + guestSession.GetAPIKey() + "&language=en-US";
@@ -171,7 +180,14 @@ public class Movie
         );
         requestQueue.add(requestLatestMovie);
     }
-    // Get random movie
+
+    /*
+     * Constructor	: RetrieveUpcomingMovies()
+     * Description	: Requests the list of new and upcoming movies from the database
+     * Parameters   : final Session guestSession - The session object containing the API key
+     *                final RequestQueue requestQueue - The Volley RequestQueue used for sending HTTP messages
+     * Return:      : N/A
+     */
     public static void RetrieveUpcomingMovies(final Session guestSession, final RequestQueue requestQueue)
     {
         String LatestMovieURL = "https://api.themoviedb.org/3/movie/upcoming?api_key=" + guestSession.GetAPIKey() + "&language=en-US&page=1";
@@ -198,6 +214,13 @@ public class Movie
         requestQueue.add(requestLatestMovie);
     }
 
+    /*
+     * Constructor	: RetrieveSearchResults()
+     * Description	: Submits a search query to the database for a response containing a list of related movies.
+     * Parameters   : final Session guestSession - The session object containing the API key
+     *                final RequestQueue requestQueue - The Volley RequestQueue used for sending HTTP messages
+     * Return:      : N/A
+     */
     public static void RetrieveSearchResults(final Session guestSession, final RequestQueue requestQueue, String query)
     {
         String HTMLquery = query.replaceAll(" ", "%20");

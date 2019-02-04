@@ -7,7 +7,6 @@
  * Description	: Code used to instigate guest sessions on TMDb.org, using a freely available developer API key.
  */
 
-
 package com.example.k13r0.TMDb_Project.Utilities;
 
 import android.content.Context;
@@ -35,68 +34,130 @@ public class Session extends Activity
 {
     private SharedPreferences sharedPreferences;
 
+    /*
+     * Constructor	: Session()
+     * Description	: Creates a new session for storing data in SharedPreferences.
+     * Parameters   : Context context - The Context object passed from the main activity for reference
+     */
     public Session(Context context)
     {
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
     }
 
-    public void StoreGSID(String GSID)
-    {
-        sharedPreferences.edit().putString("GSID", GSID).commit();
-    }
-
-    public String GetGSID()
-    {
-        String GSID = sharedPreferences.getString("GSID","");
-        return GSID;
-    }
-
+    /*
+     * Function	: SetAPIKey()
+     * Description	: Takes a String object containing a TMDb API key and stores it in SharedPreferences.
+     * Parameters   : String APIKey - The API key, a series of letters and numbers in ASCII
+     * Return:      : N/A
+     */
     public void SetAPIKey(String APIKey)
     {
         sharedPreferences.edit().putString("APIKey", APIKey).commit();
     }
 
-    public String GetAPIKey()
+    /*
+     * Function	: StoreGSID()
+     * Description	: Takes a String Object containing a TMDb guest session ID (a series of numbers) and stores it in SharedPreferences.
+     * Parameters   : JSONObject movieDetails - The JSONObject containing details pertaining to a random movie.
+     * Return:      : N/A
+     */
+    public void StoreGSID(String GSID)
     {
-        String APIKey = sharedPreferences.getString("APIKey","");
-        return APIKey;
+        sharedPreferences.edit().putString("GSID", GSID).commit();
     }
 
+    /*
+     * Function	: SetRandomMovieString()
+     * Description	: Takes a JSONObject and converts it to a string, storing it in the SharedPrefereneces.
+     * Parameters   : JSONObject movieDetails - The JSONObject containing details pertaining to a random movie.
+     * Return:      : N/A
+     */
+    public void SetRandomMovieString(JSONObject movieDetails)
+    {
+        sharedPreferences.edit().putString("RandomMovie", movieDetails.toString()).commit();
+    }
+
+    /*
+     * Function	: SetLatestMoviesString()
+     * Description	: Takes a JSONObject containing an upcoming movies list and converts it to a string, storing it in the SharedPrefereneces.
+     * Parameters   : JSONObject latestMovies - The JSON data containing the list of upcoming movies
+     * Return:      : N/A
+     */
+    public void SetLatestMoviesString(JSONObject latestMovies)
+    {
+        sharedPreferences.edit().putString("UpcomingMovies", latestMovies.toString()).commit();
+    }
+
+    /*
+     * Function	: SetSearchMoviesString()
+     * Description	: Takes a JSONObject and converts it to a string, storing it in the SharedPrefereneces.
+     * Parameters   : JSONObject searchResults - The JSONObject containing search result data.
+     * Return:      : N/A
+     */
+    public void SetSearchMoviesString(JSONObject searchResults)
+    {
+        sharedPreferences.edit().putString("SearchMovies", searchResults.toString()).commit();
+    }
+
+    /*
+     * Function	: GetGSID()
+     * Description	: Requests a guest session token ID from the TMDb website and uses the StoreGSID() method to save it.
+     * Parameters   : RequestQueue requestQueue - A Volley request queue used for HTTP communication
+     * Return:      : N/A
+     */
     public void GetGSID(RequestQueue requestQueue)
     {
         String GSID_URL = "https://api.themoviedb.org/3/authentication/guest_session/new?api_key=" + GetAPIKey();
 
         JsonObjectRequest requestGSID = new JsonObjectRequest(Request.Method.GET, GSID_URL, null,
 
-            new Response.Listener<JSONObject>()
-            {
-                @Override
-                public void onResponse(JSONObject response)
+                new Response.Listener<JSONObject>()
                 {
-                    try
+                    @Override
+                    public void onResponse(JSONObject response)
                     {
-                        StoreGSID(response.getString("guest_session_id"));
-                        Log.d("GSIDResponseSUCCESS", response.toString());
+                        try
+                        {
+                            StoreGSID(response.getString("guest_session_id"));
+                            Log.d("GSIDResponseSUCCESS", response.toString());
+                        }
+                        catch(JSONException exception)
+                        {
+                            Log.d("GSIDResponseJSONFAIL", exception.toString());
+                        }
                     }
-                    catch(JSONException exception)
+                },
+                new Response.ErrorListener()
+                {
+                    @Override
+                    public void onErrorResponse(VolleyError error)
                     {
-                        Log.d("GSIDResponseJSONFAIL", exception.toString());
+                        Log.d("GSIDConnErr", error.toString());
                     }
                 }
-            },
-            new Response.ErrorListener()
-            {
-                @Override
-                public void onErrorResponse(VolleyError error)
-                {
-                    Log.d("GSIDConnErr", error.toString());
-                }
-            }
         );
 
         requestQueue.add(requestGSID);
     }
 
+    /*
+     * Function	: GetAPIKey()
+     * Description	: Converts the JSON in SharedPreferences representing the upcoming movies list to an ArrayList of Movie objects.
+     * Parameters   : N/A
+     * Return:      : ArrayList<Movie> - The ArrayList of Movies converted from JSON.
+     */
+    public String GetAPIKey()
+    {
+        String APIKey = sharedPreferences.getString("APIKey","");
+        return APIKey;
+    }
+
+    /*
+     * Function	: GetRandomMovieObject()
+     * Description	: Takes the JSON data saved in SharedPreferences and instantiates a Movie object based on it, passing it back to the activity.
+     * Parameters   : JSONObject searchResults - The JSONObject containing search result data.
+     * Return:      : N/A
+     */
     public Movie GetRandomMovieObject()
     {
         Movie currentMovie = new Movie();
@@ -111,11 +172,12 @@ public class Session extends Activity
         return currentMovie;
     }
 
-    public void SetRandomMovieString(JSONObject movieDetails)
-    {
-        sharedPreferences.edit().putString("RandomMovie", movieDetails.toString()).commit();
-    }
-
+    /*
+     * Function	: GetUpcomingMovies()
+     * Description	: Converts the JSON in SharedPreferences representing the upcoming movies list to an ArrayList of Movie objects.
+     * Parameters   : N/A
+     * Return:      : ArrayList<Movie> - The ArrayList of Movies converted from JSON.
+     */
     public ArrayList<Movie> GetUpcomingMovies()
     {
         int numMovies = 0;
@@ -142,16 +204,12 @@ public class Session extends Activity
         return latestMovies;
     }
 
-    public void SetLatestMoviesString(JSONObject latestMovies)
-    {
-        sharedPreferences.edit().putString("UpcomingMovies", latestMovies.toString()).commit();
-    }
-
-    public void SetSearchMoviesString(JSONObject searchResults)
-    {
-        sharedPreferences.edit().putString("SearchMovies", searchResults.toString()).commit();
-    }
-
+    /*
+     * Function	: GetSearchResults()
+     * Description	: Converts the JSON string held in SharedPreferences to an ArrayList for use in an activity.
+     * Parameters   : N/A
+     * Return:      : ArrayList<Movie> - The ArrayList of Movies converted from JSON
+     */
     public ArrayList<Movie> GetSearchResults()
     {
         int numMovies = 0;
