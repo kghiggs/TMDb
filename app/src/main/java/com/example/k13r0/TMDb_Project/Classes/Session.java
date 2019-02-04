@@ -27,6 +27,10 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
+/*
+ * Class		: SearchMovies
+ * Description	: This class is used to request a session with the database, receive a session token, and store it.
+ */
 public class Session extends Activity
 {
     private SharedPreferences sharedPreferences;

@@ -29,7 +29,10 @@ import com.example.k13r0.TMDb_Project.Activities.RandomMovieTest;
 import com.example.k13r0.TMDb_Project.Classes.Movie;
 import com.example.k13r0.TMDb_Project.Classes.Session;
 
-
+/*
+ * Class		: MainActivity
+ * Description	: This class is used as a launchpad for trying out the prototype's database functions.
+ */
 public class MainActivity extends AppCompatActivity
 {
 

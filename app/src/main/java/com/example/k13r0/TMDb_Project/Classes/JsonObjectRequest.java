@@ -19,6 +19,10 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import java.io.UnsupportedEncodingException;
 
+/*
+ * Class		: JsonObjectRequest
+ * Description	: This class is used to create HTTP-based requests for JSON data and display the result.
+ */
 public class JsonObjectRequest extends JsonRequest<JSONObject>
 {
     public JsonObjectRequest(int method, String url, JSONObject jsonRequest, Listener<JSONObject> listener, Response.ErrorListener errorListener)
@@ -34,13 +38,13 @@ public class JsonObjectRequest extends JsonRequest<JSONObject>
             String jsonString = new String(response.data, HttpHeaderParser.parseCharset(response.headers));
             return Response.success(new JSONObject(jsonString), HttpHeaderParser.parseCacheHeaders(response));
         }
-        catch (UnsupportedEncodingException e)
+        catch (UnsupportedEncodingException exception)
         {
-            return Response.error(new ParseError(e));
+            return Response.error(new ParseError(exception));
         }
-        catch (JSONException je)
+        catch (JSONException exception)
         {
-            return Response.error(new ParseError(je));
+            return Response.error(new ParseError(exception));
         }
     }
 }

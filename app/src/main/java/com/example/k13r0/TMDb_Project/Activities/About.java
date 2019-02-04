@@ -15,6 +15,10 @@ import android.util.DisplayMetrics;
 
 import com.example.k13r0.TMDb_Project.R;
 
+/*
+ * Class		: About
+ * Description	:
+ */
 public class About extends AppCompatActivity {
 
     @Override

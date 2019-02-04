@@ -24,6 +24,10 @@ import java.util.Random;
 import java.text.SimpleDateFormat;
 import java.text.ParseException;
 
+/*
+ * Class		: SearchMovies
+ * Description	: This class is used to model a movie using object-oriented programming principles.
+ */
 public class Movie
 {
 

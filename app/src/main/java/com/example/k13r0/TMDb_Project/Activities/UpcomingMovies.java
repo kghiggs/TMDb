@@ -5,7 +5,6 @@
  * Project		: Assignment 1
  * File			: UpcomingMovies.java
  * Description	: Contains the code used to display upcoming movies in a ListView with text and images.
- * Credit		:
  */
 
 package com.example.k13r0.TMDb_Project.Activities;
@@ -24,6 +23,10 @@ import com.example.k13r0.TMDb_Project.R;
 
 import java.util.ArrayList;
 
+/*
+ * Class		: Upcoming Movies
+ * Description	: This class is used to query the database for upcoming movies and display them.
+ */
 public class UpcomingMovies extends AppCompatActivity
 {
     private Context context;

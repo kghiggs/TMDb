@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-    Author      :
-    Date	    :
+    Author      : Kieron Higgs
+    Date	    : Jan. 30th, 2019
     Project		: Assignment 1
     File	    : activity_random.xml
-    Description :
+    Description : Contains the XML code which forms the random movie page;
+                  A prototype for the "movie page" which should appear when a movie is selected from a list.
 -->
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"

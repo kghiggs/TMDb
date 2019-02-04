@@ -23,6 +23,10 @@ import com.example.k13r0.TMDb_Project.R;
 
 import java.util.ArrayList;
 
+/*
+ * Class		: SearchResults
+ * Description	: This class is used to display the results of a search for a movie.
+ */
 public class SearchResults extends AppCompatActivity
 {
     private Context context;

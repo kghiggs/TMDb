@@ -28,6 +28,10 @@ import com.squareup.picasso.Picasso;
 
 import java.text.SimpleDateFormat;
 
+/*
+ * Class		: RandomMovieTest
+ * Description	: This class is used to query the database for a random movie based on a random ID.
+ */
 public class RandomMovieTest extends AppCompatActivity
 {
     private Context context;

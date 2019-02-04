@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-    Author      :
-    Date	    :
+    Author      : Kieron Higgs, Bailey Mills
+    Date	    : Jan. 25th, 2019
     Project		: Assignment 1
     File	    : activity_main.xml
-    Description :
+    Description : Contains the XML code which forms the Main Activity page.
 -->
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"

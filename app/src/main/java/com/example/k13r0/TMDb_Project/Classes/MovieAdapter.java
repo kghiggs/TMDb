@@ -24,6 +24,10 @@ import com.squareup.picasso.Picasso;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
+/*
+ * Class		: SearchMovies
+ * Description	: This class is used to adapt the data within a Movie object to an ArrayList for display in a ListView.
+ */
 public class MovieAdapter extends ArrayAdapter<Movie>
 {
     Context context;
