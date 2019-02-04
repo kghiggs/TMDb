@@ -1,4 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+    Author      : Kieron Higgs
+    Date	    : Jan. 25th, 2019
+    Project		: Assignment 1
+    File	    : AndroidManifest.xml
+    Description : This file enumerates the Android Activities included in the TMDb prototype app.
+-->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.k13r0.TMDb_Project">
     <uses-permission android:name="android.permission.INTERNET"/>

@@ -1,11 +1,10 @@
 /*
  *
- * Author		:
- * Date			:
+ * Author		: Kyle Horsley
+ * Date			: Feb. 3rd, 2019
  * Project		: Assignment 1
  * File			: About.java
  * Description	:
- * Credit		:
  */
 
 package com.example.k13r0.TMDb_Project.Activities;
