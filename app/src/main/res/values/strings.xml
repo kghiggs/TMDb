@@ -4,4 +4,15 @@
     <string name="search_results">Search Results</string>
     <string name="movie_to_search_for">Movie to search for</string>
     <string name="back">Back</string>
+
+    <string name="version">TMDb App v0.1</string>
+    <string name="random_poster_cd">Random Movie Poster</string>
+    <string name="default_title">[Title]</string>
+    <string name="default_description">[Description]</string>
+    <string name="about_btn">About</string>
+    <string name="search_btn">Search Movies</string>
+    <string name="random_btn">Random Movies</string>
+    <string name="upcoming_btn">Upcoming Movies</string>
+    <string name="get_random_btn">Get Random Movie</string>
+
 </resources>

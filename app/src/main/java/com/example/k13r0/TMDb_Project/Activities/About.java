@@ -21,6 +21,12 @@ import com.example.k13r0.TMDb_Project.R;
  */
 public class About extends AppCompatActivity {
 
+    /*
+     * Function		: onCreate
+     * Description	:
+     * Parameters	: Bundle savedInstanceState
+     * Returns		: N/A
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
