@@ -35,34 +35,34 @@ import java.text.ParseException;
 public class Movie
 {
 
-    public int ID;
+    private int ID;
     public int GetID() { return this.ID; }
 
-    public String title;
+    private String title;
     public String GetTitle() { return this.title; }
 
-    public String overview;
+    private String overview;
     public String GetOverview() { return this.overview; }
 
-    public String posterPath;
+    private String posterPath;
     public String GetPosterPath() { return this.posterPath; }
 
-    public String backdropPath;
+    private String backdropPath;
     public String GetBackdropPath() { return this.backdropPath; }
 
-    public Date releaseDate;
+    private Date releaseDate;
     public Date GetReleaseDate() { return this.releaseDate; }
 
-    public boolean videoAvailable;
+    private boolean videoAvailable;
     public boolean VideoAvailable() { return this.videoAvailable; }
 
-    public double popularity;
+    private double popularity;
     public double GetPopularity() { return this.popularity; }
 
-    public int voteCount;
+    private int voteCount;
     public int GetVoteCount() { return this.voteCount; }
 
-    public double voteAverage;
+    private double voteAverage;
     public double GetVoteAverage() { return this.voteAverage; }
 
     /*
@@ -227,7 +227,7 @@ public class Movie
      *                final RequestQueue requestQueue - The Volley RequestQueue used for sending HTTP messages
      * Return:      : N/A
      */
-    public static void RetrieveSearchResults(final Session guestSession, final RequestQueue requestQueue, String query)
+    public static void RetrieveSearchResults(final Session guestSession, final RequestQueue requestQueue, final Context context, String query)
     {
         String HTMLquery = query.replaceAll(" ", "%20");
         String LatestMovieURL = "https://api.themoviedb.org/3/search/movie?api_key=" + guestSession.GetAPIKey() + "&language=en-US&page=1" + "&query=" + HTMLquery + "&include_adult=false";
@@ -247,7 +247,8 @@ public class Movie
                     @Override
                     public void onErrorResponse(VolleyError error)
                     {
-                        Log.d("LatestMoviesCONNERR", error.toString());
+                        ShowSnackbar(context.getString(R.string.latest_movie_conn_ERR), ((Activity)context).getWindow().findViewById(android.R.id.content));
+                        Log.d(context.getString(R.string.latest_movie_conn_ERR), error.toString());
                     }
                 }
         );

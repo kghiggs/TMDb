@@ -86,20 +86,20 @@ public class MovieAdapter extends ArrayAdapter<Movie>
         TextView moreInfo = convertView.findViewById(R.id.moreInfo);
         ImageView thumbnail = convertView.findViewById(R.id.thumbnail);
 
-        titleAndYear.setText(movie.title);
+        titleAndYear.setText(movie.GetTitle());
 
-        if (movie.releaseDate != null)
+        if (movie.GetReleaseDate() != null)
         {
             SimpleDateFormat dateFormat = new SimpleDateFormat("EEE. MMMM dd");
-            String dateString = dateFormat.format(movie.releaseDate);
+            String dateString = dateFormat.format(movie.GetReleaseDate());
             moreInfo.setText(dateString);
         }
 
         //TextView randomReleaseDate = findViewById(R.id.randomReleaseDate);
         //randomReleaseDate.setText(randomMovie.releaseDate.toString());
-        if (movie.posterPath != null)
+        if (movie.GetPosterPath() != null)
         {
-            Picasso.with(context).load("https://image.tmdb.org/t/p/w500/" + movie.posterPath).into(thumbnail);
+            Picasso.with(context).load(context.getString(R.string.image_URL) + movie.GetPosterPath()).into(thumbnail);
         }
         return convertView;
     }

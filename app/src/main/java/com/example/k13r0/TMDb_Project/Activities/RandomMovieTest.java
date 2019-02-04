@@ -74,21 +74,21 @@ public class RandomMovieTest extends AppCompatActivity
                 Movie.GetRandomMovie(guestSession, requestQueue, context);
                 Movie randomMovie = guestSession.GetRandomMovieObject(context);
 
-                randomMovieTitle.setText(randomMovie.title);
-                randomOverview.setText(randomMovie.overview);
+                randomMovieTitle.setText(randomMovie.GetTitle());
+                randomOverview.setText(randomMovie.GetOverview());
 
-                if (randomMovie.releaseDate != null)
+                if (randomMovie.GetReleaseDate() != null)
                 {
                     SimpleDateFormat year = new SimpleDateFormat("yyyy");
-                    String titleAndYear = randomMovie.title + " (" + year.format(randomMovie.releaseDate) + ")";
+                    String titleAndYear = randomMovie.GetTitle() + " (" + year.format(randomMovie.GetReleaseDate()) + ")";
                     randomMovieTitle.setText(titleAndYear);
                 }
 
                 //TextView randomReleaseDate = findViewById(R.id.randomReleaseDate);
                 //randomReleaseDate.setText(randomMovie.releaseDate.toString());
-                if (randomMovie.posterPath != null)
+                if (randomMovie.GetPosterPath() != null)
                 {
-                    Picasso.with(context).load(getString(R.string.image_URL) + randomMovie.posterPath).into(randomPoster);
+                    Picasso.with(context).load(getString(R.string.image_URL) + randomMovie.GetPosterPath()).into(randomPoster);
                 }
             }
         });

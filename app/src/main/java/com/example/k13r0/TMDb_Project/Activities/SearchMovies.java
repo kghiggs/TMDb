@@ -74,7 +74,7 @@ public class SearchMovies extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
 
-        context = getApplicationContext();
+        context = this;
         guestSession = new Session(context);
         requestQueue = Volley.newRequestQueue(this);
 
@@ -193,7 +193,7 @@ public class SearchMovies extends AppCompatActivity implements View.OnClickListe
                             public void onResponse(JSONObject searchResults)
                             {
                                 guestSession.SetSearchMoviesString(searchResults);
-                                Movie.RetrieveSearchResults(guestSession, requestQueue, query);
+                                Movie.RetrieveSearchResults(guestSession, requestQueue, context, query);
                                 startActivity(new Intent(SearchMovies.this, SearchResults.class));
                             }
                         },
