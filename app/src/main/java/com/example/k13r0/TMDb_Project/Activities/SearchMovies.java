@@ -7,6 +7,8 @@
  * Description	: This file contains the SearchMovies class. It allows the user to search for a movie.
  */
 
+
+
 package com.example.k13r0.TMDb_Project.Activities;
 
 import android.content.Context;
@@ -43,6 +45,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 
+
 /*
  * Class		: SearchMovies
  * Description	: This class is used to search for a specified movie.
@@ -61,6 +64,8 @@ public class SearchMovies extends AppCompatActivity implements View.OnClickListe
     private ListView resultsList;
     private ArrayList<Movie> resultsArray;
     private MovieAdapter movieAdapter;
+
+
 
     /*
      * Function		: onCreate
@@ -92,7 +97,7 @@ public class SearchMovies extends AppCompatActivity implements View.OnClickListe
 
     /*
      * Function		: onCreateOptionsMenu
-     * Description	:
+     * Description	: on create event handler
      * Parameters	: Menu menu
      * Returns		: true
      */
@@ -103,9 +108,12 @@ public class SearchMovies extends AppCompatActivity implements View.OnClickListe
         inflater.inflate(R.menu.search_menu, menu);
         return true;
     }
+
+
+
     /*
      * Function		: onOptionsItemSelected
-     * Description	:
+     * Description	: Item selection even handler.
      * Parameters	: MenuItem item
      * Returns		: super.onOptionsItemSelected(item)
      */
@@ -128,9 +136,11 @@ public class SearchMovies extends AppCompatActivity implements View.OnClickListe
 
     private TextWatcher searchTextWatcher = new TextWatcher() {
 
+
+
         /*
          * Function		: beforeTextChanged
-         * Description	:
+         * Description	: Event handler, called before text changes.
          * Parameters	: CharSequence s, int start, int count, int after
          * Returns		: N/A
          */
@@ -143,7 +153,7 @@ public class SearchMovies extends AppCompatActivity implements View.OnClickListe
 
         /*
          * Function		: onTextChanged
-         * Description	:
+         * Description	: Event handler, called when text changes.
          * Parameters	: CharSequence s, int start, int count, int after
          * Returns		: N/A
          */
@@ -158,7 +168,7 @@ public class SearchMovies extends AppCompatActivity implements View.OnClickListe
 
         /*
          * Function		: afterTextChanged
-         * Description	:
+         * Description	: Event handler, called after text changes.
          * Parameters	: CharSequence s, int start, int count, int after
          * Returns		: N/A
          */
@@ -172,7 +182,7 @@ public class SearchMovies extends AppCompatActivity implements View.OnClickListe
 
     /*
      * Function		: onClick
-     * Description	:
+     * Description	: This is the on click even handler.
      * Parameters	: View v
      * Returns		: N/A
      */
@@ -215,7 +225,7 @@ public class SearchMovies extends AppCompatActivity implements View.OnClickListe
 
     /*
      * Function		: goToMain
-     * Description	:
+     * Description	: Goes to the main activity
      * Parameters	: N/A
      * Returns		: N/A
      */
@@ -228,7 +238,7 @@ public class SearchMovies extends AppCompatActivity implements View.OnClickListe
 
     /*
      * Function		: goToAbout
-     * Description	:
+     * Description	: show the about page
      * Parameters	: N/A
      * Returns		: N/A
      */
