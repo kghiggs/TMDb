@@ -7,7 +7,7 @@
  * Description	: Used to make an HTTP request for a JSON object and decode the respoonse.
  */
 
-package com.example.k13r0.TMDb_Project.Classes;
+package com.example.k13r0.TMDb_Project.Utilities;
 
 import com.android.volley.toolbox.JsonRequest;
 import com.android.volley.toolbox.HttpHeaderParser;
@@ -25,11 +25,26 @@ import java.io.UnsupportedEncodingException;
  */
 public class JsonObjectRequest extends JsonRequest<JSONObject>
 {
+    /*
+     * Function		: JsonObjectRequest
+     * Description	: Constructs a JSONObject
+     * Parameters	: int method - Either GET or POST
+     *                String url - The desired URL to send the request
+     *                JSONObject jsonRequest - The JSONObject to hold the request
+     *                Listener<JSONObject> listener - The Listener object with its defined response behaviour
+     *                Response.ErrorListener errorListener - A second listener for detecting errors
+     */
     public JsonObjectRequest(int method, String url, JSONObject jsonRequest, Listener<JSONObject> listener, Response.ErrorListener errorListener)
     {
         super(method, url, (jsonRequest == null) ? null : jsonRequest.toString(), listener, errorListener);
     }
 
+    /*
+     * Function		: parseNetworkResponse
+     * Description	: Decodes the HTTP response from the database using the HttpHeaderParser class methods.
+     * Parameters	: NetworkResponse response
+     * Returns		: Response<JSONObject> - The JSON from the HTTP response.
+     */
     @Override
     protected Response<JSONObject> parseNetworkResponse(NetworkResponse response)
     {
