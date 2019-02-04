@@ -19,12 +19,15 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.example.k13r0.TMDb_Project.R;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+
+import static com.example.k13r0.TMDb_Project.Utilities.MakeSnackbar.ShowSnackbar;
 
 /*
  * Class		: Session
@@ -105,9 +108,9 @@ public class Session extends Activity
      * Parameters   : RequestQueue requestQueue - A Volley request queue used for HTTP communication
      * Return:      : N/A
      */
-    public void GetGSID(RequestQueue requestQueue)
+    public void GetGSID(RequestQueue requestQueue, Context context)
     {
-        String GSID_URL = "https://api.themoviedb.org/3/authentication/guest_session/new?api_key=" + GetAPIKey();
+        String GSID_URL = context.getString(R.string.base_db_URL) + GetAPIKey();
 
         JsonObjectRequest requestGSID = new JsonObjectRequest(Request.Method.GET, GSID_URL, null,
 
@@ -167,7 +170,8 @@ public class Session extends Activity
         }
         catch (JSONException exception)
         {
-            Log.d("CurrentMovieJSONFAIL", exception.toString());
+            ShowSnackbar(context.getString(R.string.shared_pref_json_ERR), ((Activity)context).getWindow().findViewById(android.R.id.content));
+            Log.d(context.getString(R.string.shared_pref_json_ERR), exception.toString());
         }
         return currentMovie;
     }
@@ -198,7 +202,8 @@ public class Session extends Activity
         }
         catch (JSONException exception)
         {
-            Log.d("CurrentMovieJSONFAIL", exception.toString());
+            ShowSnackbar(context.getString(R.string.shared_pref_json_ERR), ((Activity)context).getWindow().findViewById(android.R.id.content));
+            Log.d(context.getString(R.string.shared_pref_json_ERR), exception.toString());
         }
 
         return latestMovies;
@@ -230,7 +235,8 @@ public class Session extends Activity
         }
         catch (JSONException exception)
         {
-            Log.d("CurrentMovieJSONFAIL", exception.toString());
+            ShowSnackbar(context.getString(R.string.shared_pref_json_ERR), ((Activity)context).getWindow().findViewById(android.R.id.content));
+            Log.d(context.getString(R.string.shared_pref_json_ERR), exception.toString());
         }
 
         return latestMovies;

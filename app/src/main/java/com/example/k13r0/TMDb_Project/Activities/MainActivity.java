@@ -61,7 +61,7 @@ public class MainActivity extends AppCompatActivity
         final Session guestSession = new Session(context);
 
         guestSession.SetAPIKey(getString(R.string.api_key));
-        guestSession.GetGSID(requestQueue);
+        guestSession.GetGSID(requestQueue, context);
         Movie.RetrieveUpcomingMovies(guestSession, requestQueue, mainContext);
 
         Button searchButton = findViewById(R.id.searchButton);

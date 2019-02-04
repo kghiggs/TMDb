@@ -14,11 +14,13 @@
 
     <string name="latest_movie_URL">https://api.themoviedb.org/3/movie/latest?api_key=</string>
     <string name="base_db_URL">https://api.themoviedb.org/3/movie/</string>
-
+    <string name="guest_session_URL">https://api.themoviedb.org/3/authentication/guest_session/new?api_key=</string>
     <string name="movie_detail_json_ERR">MovieDetailsJSONFAIL</string>
     <string name="movie_detail_parse_ERR">MovieDetailsPARSEFAIL</string>
     <string name="log_search_conn_ERR">SearchMoviesCONNERR</string>
-
+    <string name="shared_pref_json_ERR">SharedPrefJSONFAIL</string>
+    <string name="GSID_response_json_ERR">GSIDResponseJSONFAIL</string>
+    <string name="GSID_response_conn_ERR">GSIDResponseCONNERR</string>
     <string name="latest_movie_conn_ERR">LatestMovieCONNERR</string>
     <string name="random_movie_json_ERR">RandomMovieJSONFAIL</string>
     <string name="random_movie_conn_ERR">RandomMovieCONNERR</string>
