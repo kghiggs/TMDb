@@ -72,35 +72,41 @@ public class RandomMovieTest extends AppCompatActivity
             @Override
             public void onClick(View v)
             {
-
-                Movie.GetRandomMovie(guestSession, requestQueue, context);
-                Movie randomMovie = guestSession.GetRandomMovieObject(context);
-
-                if (randomMovie.GetAdult() == false)
-                {
-
-                    randomMovieTitle.setText(randomMovie.GetTitle());
-                    randomOverview.setText(randomMovie.GetOverview());
-
-                    if (randomMovie.GetReleaseDate() != null)
-                    {
-                        SimpleDateFormat year = new SimpleDateFormat("yyyy");
-                        String titleAndYear = randomMovie.GetTitle() + " (" + year.format(randomMovie.GetReleaseDate()) + ")";
-                        randomMovieTitle.setText(titleAndYear);
-                    }
-
-                    //TextView randomReleaseDate = findViewById(R.id.randomReleaseDate);
-                    //randomReleaseDate.setText(randomMovie.releaseDate.toString());
-                    if (randomMovie.GetPosterPath() != null)
-                    {
-                        Picasso.with(context).load(getString(R.string.image_URL) + randomMovie.GetPosterPath()).into(randomPoster);
-                    }
-                }
-                else
-                {
-                    ShowSnackbar("Blocked adult database entry.", ((Activity)context).getWindow().findViewById(android.R.id.content));
-                }
+                LoadRandomMovie(randomButton);
             }
         });
+
+        LoadRandomMovie(randomButton);
+    }
+
+
+    private void LoadRandomMovie(View v){
+        Movie.GetRandomMovie(guestSession, requestQueue, context);
+        Movie randomMovie = guestSession.GetRandomMovieObject(context);
+
+        if (randomMovie.GetAdult() == false)
+        {
+
+            randomMovieTitle.setText(randomMovie.GetTitle());
+            randomOverview.setText(randomMovie.GetOverview());
+
+            if (randomMovie.GetReleaseDate() != null)
+            {
+                SimpleDateFormat year = new SimpleDateFormat("yyyy");
+                String titleAndYear = randomMovie.GetTitle() + " (" + year.format(randomMovie.GetReleaseDate()) + ")";
+                randomMovieTitle.setText(titleAndYear);
+            }
+
+            //TextView randomReleaseDate = findViewById(R.id.randomReleaseDate);
+            //randomReleaseDate.setText(randomMovie.releaseDate.toString());
+            if (randomMovie.GetPosterPath() != null)
+            {
+                Picasso.with(context).load(getString(R.string.image_URL) + randomMovie.GetPosterPath()).into(randomPoster);
+            }
+        }
+        else
+        {
+            ShowSnackbar("Blocked adult database entry.", v);
+        }
     }
 }
