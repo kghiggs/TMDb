@@ -8,7 +8,7 @@
  */
 
 
-package com.example.k13r0.TMDb_Project.Classes;
+package com.example.k13r0.TMDb_Project.Utilities;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -28,7 +28,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 /*
- * Class		: SearchMovies
+ * Class		: Session
  * Description	: This class is used to request a session with the database, receive a session token, and store it.
  */
 public class Session extends Activity
