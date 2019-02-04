@@ -158,12 +158,12 @@ public class Session extends Activity
      * Parameters   : JSONObject searchResults - The JSONObject containing search result data.
      * Return:      : N/A
      */
-    public Movie GetRandomMovieObject()
+    public Movie GetRandomMovieObject(Context context)
     {
         Movie currentMovie = new Movie();
         try
         {
-            currentMovie = new Movie(new JSONObject(sharedPreferences.getString("RandomMovie","")));
+            currentMovie = new Movie(new JSONObject(sharedPreferences.getString("RandomMovie","")), context);
         }
         catch (JSONException exception)
         {
@@ -178,7 +178,7 @@ public class Session extends Activity
      * Parameters   : N/A
      * Return:      : ArrayList<Movie> - The ArrayList of Movies converted from JSON.
      */
-    public ArrayList<Movie> GetUpcomingMovies()
+    public ArrayList<Movie> GetUpcomingMovies(Context context)
     {
         int numMovies = 0;
         JSONObject latestMoviesObject;
@@ -193,7 +193,7 @@ public class Session extends Activity
 
             for (int upcomingCounter = 0; upcomingCounter < numMovies; upcomingCounter++)
             {
-                latestMovies.add(new Movie(latestMoviesArray.getJSONObject(upcomingCounter)));
+                latestMovies.add(new Movie(latestMoviesArray.getJSONObject(upcomingCounter), context));
             }
         }
         catch (JSONException exception)
@@ -210,7 +210,7 @@ public class Session extends Activity
      * Parameters   : N/A
      * Return:      : ArrayList<Movie> - The ArrayList of Movies converted from JSON
      */
-    public ArrayList<Movie> GetSearchResults()
+    public ArrayList<Movie> GetSearchResults(Context context)
     {
         int numMovies = 0;
         JSONObject latestMoviesObject;
@@ -225,7 +225,7 @@ public class Session extends Activity
 
             for (int upcomingCounter = 0; upcomingCounter < numMovies; upcomingCounter++)
             {
-                latestMovies.add(new Movie(latestMoviesArray.getJSONObject(upcomingCounter)));
+                latestMovies.add(new Movie(latestMoviesArray.getJSONObject(upcomingCounter), context));
             }
         }
         catch (JSONException exception)

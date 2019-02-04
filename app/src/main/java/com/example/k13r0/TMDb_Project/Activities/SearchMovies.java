@@ -202,7 +202,7 @@ public class SearchMovies extends AppCompatActivity implements View.OnClickListe
                             @Override
                             public void onErrorResponse(VolleyError error)
                             {
-                                Log.d(getString(R.string.log_search_conn_err), error.toString());
+                                Log.d(getString(R.string.log_search_conn_ERR), error.toString());
                             }
                         }
                 );

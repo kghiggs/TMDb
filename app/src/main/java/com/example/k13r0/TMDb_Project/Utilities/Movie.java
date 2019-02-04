@@ -9,12 +9,16 @@
 
 package com.example.k13r0.TMDb_Project.Utilities;
 
+import android.app.Activity;
+import android.content.Context;
 import android.util.Log;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.example.k13r0.TMDb_Project.R;
+import static com.example.k13r0.TMDb_Project.Utilities.MakeSnackbar.ShowSnackbar;
 
 import org.json.JSONObject;
 import org.json.JSONException;
@@ -84,7 +88,7 @@ public class Movie
      * Description	: Instantiates a movie object based on a JSON string containing the data which will fill its attributes
      * Parameters   : JSONObject details - the JSON which contains the movie details
      */
-    public Movie(JSONObject details)
+    public Movie(JSONObject details, Context context)
     {
         try
         {
@@ -101,13 +105,13 @@ public class Movie
         }
         catch (JSONException exception)
         {
-            Log.d("MovieDetailJSONFAIL", exception.toString());
+            ShowSnackbar(context.getString(R.string.movie_detail_json_ERR), ((Activity)context).getWindow().findViewById(android.R.id.content));
+            Log.d(context.getString(R.string.movie_detail_json_ERR), exception.toString());
         }
         catch (ParseException exception)
         {
-            Log.d("MovieDetailsPARSEFAIL", exception.toString());
+            Log.d(context.getString(R.string.movie_detail_parse_ERR), exception.toString());
         }
-
     }
 
     /*
@@ -117,9 +121,9 @@ public class Movie
      *                final RequestQueue requestQueue - The Volley RequestQueue used for sending HTTP messages
      * Return:      : N/A
      */
-    public static void GetRandomMovie(final Session guestSession, final RequestQueue requestQueue)
+    public static void GetRandomMovie(final Session guestSession, final RequestQueue requestQueue, final Context context)
     {
-        String LatestMovieURL = "https://api.themoviedb.org/3/movie/latest?api_key=" + guestSession.GetAPIKey() + "&language=en-US";
+        String LatestMovieURL = context.getString(R.string.latest_movie_URL) + guestSession.GetAPIKey() + context.getString(R.string.lang_ENG_URL);
 
         JsonObjectRequest requestLatestMovie = new JsonObjectRequest(Request.Method.GET, LatestMovieURL, null,
 
@@ -131,15 +135,13 @@ public class Movie
                     try
                     {
                         int latestMovieID = response.getInt("id");
-                        Log.d("RandomMovieSUCCESS", response.toString());
-
                         Random rand = new Random();
                         int randomMovieID;
                         String RandomMovieURL = "";
 
                         randomMovieID = rand.nextInt(latestMovieID + 1);
 
-                        RandomMovieURL = "https://api.themoviedb.org/3/movie/" + Integer.toString(randomMovieID) + "?api_key=" + guestSession.GetAPIKey() + "&language=en-US";
+                        RandomMovieURL = context.getString(R.string.base_db_URL) + Integer.toString(randomMovieID) + "?api_key=" + guestSession.GetAPIKey() + context.getString(R.string.lang_ENG_URL);
 
                         JsonObjectRequest requestRandomMovie = new JsonObjectRequest(Request.Method.GET, RandomMovieURL, null,
 
@@ -149,14 +151,15 @@ public class Movie
                                 public void onResponse(JSONObject randomDetails)
                                 {
                                     guestSession.SetRandomMovieString(randomDetails);
-                                    Log.d("RandomMovieSUCCESS", randomDetails.toString());
+                                    Log.d(context.getString(R.string.random_movie_SUCCESS), randomDetails.toString());
                                 }
                             },
                             new Response.ErrorListener() {
                                 @Override
                                 public void onErrorResponse(VolleyError error)
                                 {
-                                    Log.d("RandomMovieCONNERR", error.toString());
+                                    ShowSnackbar(context.getString(R.string.random_movie_conn_ERR), ((Activity)context).getWindow().findViewById(android.R.id.content));
+                                    Log.d(context.getString(R.string.random_movie_conn_ERR), error.toString());
                                 }
                             }
                         );
@@ -165,7 +168,8 @@ public class Movie
                     }
                     catch (JSONException exception)
                     {
-                        Log.d("RandomMovieJSONFAIL", exception.toString());
+                        ShowSnackbar(context.getString(R.string.random_movie_json_ERR), ((Activity)context).getWindow().findViewById(android.R.id.content));
+                        Log.d(context.getString(R.string.random_movie_json_ERR), exception.toString());
                     }
                 }
             },
@@ -174,7 +178,8 @@ public class Movie
                 @Override
                 public void onErrorResponse(VolleyError error)
                 {
-                    Log.d("RandomMovieCONNERR", error.toString());
+                    ShowSnackbar(context.getString(R.string.latest_movie_conn_ERR), ((Activity)context).getWindow().findViewById(android.R.id.content));
+                    Log.d(context.getString(R.string.latest_movie_conn_ERR), error.toString());
                 }
             }
         );
@@ -188,7 +193,7 @@ public class Movie
      *                final RequestQueue requestQueue - The Volley RequestQueue used for sending HTTP messages
      * Return:      : N/A
      */
-    public static void RetrieveUpcomingMovies(final Session guestSession, final RequestQueue requestQueue)
+    public static void RetrieveUpcomingMovies(final Session guestSession, final RequestQueue requestQueue, final Context context)
     {
         String LatestMovieURL = "https://api.themoviedb.org/3/movie/upcoming?api_key=" + guestSession.GetAPIKey() + "&language=en-US&page=1";
 
@@ -207,7 +212,8 @@ public class Movie
                     @Override
                     public void onErrorResponse(VolleyError error)
                     {
-                        Log.d("LatestMoviesCONNERR", error.toString());
+                        ShowSnackbar(context.getString(R.string.latest_movie_conn_ERR), ((Activity)context).getWindow().findViewById(android.R.id.content));
+                        Log.d(context.getString(R.string.latest_movie_conn_ERR), error.toString());
                     }
                 }
         );

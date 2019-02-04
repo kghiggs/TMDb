@@ -48,11 +48,11 @@ public class SearchResults extends AppCompatActivity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_results);
-        context = getApplicationContext();
+        context = this;
         requestQueue = Volley.newRequestQueue(this);
         guestSession = new Session(context);
 
-        resultsArray = guestSession.GetSearchResults();
+        resultsArray = guestSession.GetSearchResults(context);
         movieAdapter = new MovieAdapter(context, R.layout.list_row, resultsArray);
 
         resultsList = findViewById(android.R.id.list);

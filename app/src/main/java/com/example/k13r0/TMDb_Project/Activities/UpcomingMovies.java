@@ -48,13 +48,13 @@ public class UpcomingMovies extends AppCompatActivity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_upcoming);
-        context = getApplicationContext();
+        context = this;
         requestQueue = Volley.newRequestQueue(this);
         guestSession = new Session(context);
 
-        Movie.RetrieveUpcomingMovies(guestSession, requestQueue);
+        Movie.RetrieveUpcomingMovies(guestSession, requestQueue, context);
 
-        upcomingArray = guestSession.GetUpcomingMovies();
+        upcomingArray = guestSession.GetUpcomingMovies(context);
         movieAdapter = new MovieAdapter(context, R.layout.list_row, upcomingArray);
 
         upcomingList = findViewById(android.R.id.list);

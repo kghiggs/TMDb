@@ -12,8 +12,18 @@
     <string name="non_adult_URL">&amp;include_adult=false</string>
     <string name="query_URL">&amp;query=</string>
 
+    <string name="latest_movie_URL">https://api.themoviedb.org/3/movie/latest?api_key=</string>
+    <string name="base_db_URL">https://api.themoviedb.org/3/movie/</string>
 
-    <string name="log_search_conn_err">SearchMoviesCONNERR</string>
+    <string name="movie_detail_json_ERR">MovieDetailsJSONFAIL</string>
+    <string name="movie_detail_parse_ERR">MovieDetailsPARSEFAIL</string>
+    <string name="log_search_conn_ERR">SearchMoviesCONNERR</string>
+
+    <string name="latest_movie_conn_ERR">LatestMovieCONNERR</string>
+    <string name="random_movie_json_ERR">RandomMovieJSONFAIL</string>
+    <string name="random_movie_conn_ERR">RandomMovieCONNERR</string>
+    <string name="random_movie_SUCCESS">RandomMovieSUCCESS</string>
+
     <string name="HTTP_whitespace">%20</string>
     <string name="version">TMDb App v0.1</string>
     <string name="random_poster_cd">Random Movie Poster</string>

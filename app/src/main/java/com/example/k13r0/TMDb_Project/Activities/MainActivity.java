@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
 
         mainActivity = this;
-        mainContext = getApplicationContext();
+        mainContext = this;
         mainActivityView = findViewById(R.id.mainActivity);
 
         final Resources resources = getResources();
@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity
 
         guestSession.SetAPIKey(getString(R.string.api_key));
         guestSession.GetGSID(requestQueue);
-        Movie.RetrieveUpcomingMovies(guestSession, requestQueue);
+        Movie.RetrieveUpcomingMovies(guestSession, requestQueue, mainContext);
 
         Button searchButton = findViewById(R.id.searchButton);
         searchButton.setOnClickListener(new View.OnClickListener()

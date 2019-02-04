@@ -56,7 +56,7 @@ public class RandomMovieTest extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_random);
 
-        context = getApplicationContext();
+        context = this;
         requestQueue = Volley.newRequestQueue(this);
         guestSession = new Session(context);
 
@@ -71,8 +71,8 @@ public class RandomMovieTest extends AppCompatActivity
             public void onClick(View v)
             {
 
-                Movie.GetRandomMovie(guestSession, requestQueue);
-                Movie randomMovie = guestSession.GetRandomMovieObject();
+                Movie.GetRandomMovie(guestSession, requestQueue, context);
+                Movie randomMovie = guestSession.GetRandomMovieObject(context);
 
                 randomMovieTitle.setText(randomMovie.title);
                 randomOverview.setText(randomMovie.overview);
