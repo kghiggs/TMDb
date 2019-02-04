@@ -67,7 +67,7 @@
         app:layout_constraintTop_toTopOf="@+id/searchButton" />
 
     <ImageView
-        android:id="@+id/randomPoster"
+        android:id="@+id/tmdbLogo"
         android:layout_width="186dp"
         android:layout_height="0dp"
 
@@ -77,6 +77,7 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/aboutButton"
-        app:srcCompat="@drawable/tmdb_logo" />
+        app:srcCompat="@drawable/tmdb_logo"
+        android:contentDescription="@string/tmdb_logo" />
 
 </android.support.constraint.ConstraintLayout>

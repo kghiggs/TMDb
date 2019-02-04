@@ -182,8 +182,8 @@ public class SearchMovies extends AppCompatActivity implements View.OnClickListe
         {
             case R.id.btnSearch:
                 query = txtMovieSearch.getText().toString();
-                String HTMLquery = query.replaceAll(" ", "%20");
-                String LatestMovieURL = "https://api.themoviedb.org/3/search/movie?api_key=" + guestSession.GetAPIKey() + "&language=en-US&page=1" + "&query=" + HTMLquery + "&include_adult=false";
+                String HTMLquery = getString(R.string.query_URL) + query.replaceAll(" ", "%20");
+                String LatestMovieURL = getString(R.string.search_URL) + guestSession.GetAPIKey() + getString(R.string.lang_ENG_URL) +  HTMLquery + getString(R.string.non_adult_URL);
 
                 JsonObjectRequest requestLatestMovie = new JsonObjectRequest(Request.Method.GET, LatestMovieURL, null,
 
@@ -202,7 +202,7 @@ public class SearchMovies extends AppCompatActivity implements View.OnClickListe
                             @Override
                             public void onErrorResponse(VolleyError error)
                             {
-                                Log.d("SearchMoviesCONNERR", error.toString());
+                                Log.d(getString(R.string.log_search_conn_err), error.toString());
                             }
                         }
                 );

@@ -88,7 +88,7 @@ public class RandomMovieTest extends AppCompatActivity
                 //randomReleaseDate.setText(randomMovie.releaseDate.toString());
                 if (randomMovie.posterPath != null)
                 {
-                    Picasso.with(context).load("https://image.tmdb.org/t/p/w500/" + randomMovie.posterPath).into(randomPoster);
+                    Picasso.with(context).load(getString(R.string.image_URL) + randomMovie.posterPath).into(randomPoster);
                 }
             }
         });

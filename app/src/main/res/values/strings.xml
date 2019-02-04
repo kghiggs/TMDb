@@ -5,6 +5,16 @@
     <string name="movie_to_search_for">Movie to search for</string>
     <string name="back">Back</string>
 
+    <string name="api_key">27fc45ada92ace137689b2c3ddb1c6d0</string>
+    <string name="image_URL">https://image.tmdb.org/t/p/w500/</string>
+    <string name="search_URL">https://api.themoviedb.org/3/search/movie?api_key=</string>
+    <string name="lang_ENG_URL">&amp;language=en-US</string>
+    <string name="non_adult_URL">&amp;include_adult=false</string>
+    <string name="query_URL">&amp;query=</string>
+
+
+    <string name="log_search_conn_err">SearchMoviesCONNERR</string>
+    <string name="HTTP_whitespace">%20</string>
     <string name="version">TMDb App v0.1</string>
     <string name="random_poster_cd">Random Movie Poster</string>
     <string name="default_title">[Title]</string>
@@ -14,5 +24,6 @@
     <string name="random_btn">Random Movies</string>
     <string name="upcoming_btn">Upcoming Movies</string>
     <string name="get_random_btn">Get Random Movie</string>
+    <string name="tmdb_logo">The Movie Database Logo</string>
 
 </resources>

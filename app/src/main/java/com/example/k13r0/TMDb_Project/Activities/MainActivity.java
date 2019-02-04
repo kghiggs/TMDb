@@ -9,6 +9,7 @@
 
 package com.example.k13r0.TMDb_Project.Activities;
 
+import android.content.res.Resources;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.content.Context;
@@ -52,11 +53,14 @@ public class MainActivity extends AppCompatActivity
         mainContext = getApplicationContext();
         mainActivityView = findViewById(R.id.mainActivity);
 
+        final Resources resources = getResources();
+
+
         final RequestQueue requestQueue = Volley.newRequestQueue(this);
         final Context context = getApplicationContext();
         final Session guestSession = new Session(context);
 
-        guestSession.SetAPIKey("27fc45ada92ace137689b2c3ddb1c6d0");
+        guestSession.SetAPIKey(getString(R.string.api_key));
         guestSession.GetGSID(requestQueue);
         Movie.RetrieveUpcomingMovies(guestSession, requestQueue);
 
