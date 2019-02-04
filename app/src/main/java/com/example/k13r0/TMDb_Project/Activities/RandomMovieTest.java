@@ -9,6 +9,7 @@
 
 package com.example.k13r0.TMDb_Project.Activities;
 
+import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -23,6 +24,7 @@ import com.android.volley.toolbox.Volley;
 import com.example.k13r0.TMDb_Project.Utilities.Movie;
 import com.example.k13r0.TMDb_Project.Utilities.Session;
 import com.example.k13r0.TMDb_Project.R;
+import static com.example.k13r0.TMDb_Project.Utilities.MakeSnackbar.ShowSnackbar;
 
 import com.squareup.picasso.Picasso;
 
@@ -74,21 +76,29 @@ public class RandomMovieTest extends AppCompatActivity
                 Movie.GetRandomMovie(guestSession, requestQueue, context);
                 Movie randomMovie = guestSession.GetRandomMovieObject(context);
 
-                randomMovieTitle.setText(randomMovie.GetTitle());
-                randomOverview.setText(randomMovie.GetOverview());
-
-                if (randomMovie.GetReleaseDate() != null)
+                if (randomMovie.GetAdult() == false)
                 {
-                    SimpleDateFormat year = new SimpleDateFormat("yyyy");
-                    String titleAndYear = randomMovie.GetTitle() + " (" + year.format(randomMovie.GetReleaseDate()) + ")";
-                    randomMovieTitle.setText(titleAndYear);
+
+                    randomMovieTitle.setText(randomMovie.GetTitle());
+                    randomOverview.setText(randomMovie.GetOverview());
+
+                    if (randomMovie.GetReleaseDate() != null)
+                    {
+                        SimpleDateFormat year = new SimpleDateFormat("yyyy");
+                        String titleAndYear = randomMovie.GetTitle() + " (" + year.format(randomMovie.GetReleaseDate()) + ")";
+                        randomMovieTitle.setText(titleAndYear);
+                    }
+
+                    //TextView randomReleaseDate = findViewById(R.id.randomReleaseDate);
+                    //randomReleaseDate.setText(randomMovie.releaseDate.toString());
+                    if (randomMovie.GetPosterPath() != null)
+                    {
+                        Picasso.with(context).load(getString(R.string.image_URL) + randomMovie.GetPosterPath()).into(randomPoster);
+                    }
                 }
-
-                //TextView randomReleaseDate = findViewById(R.id.randomReleaseDate);
-                //randomReleaseDate.setText(randomMovie.releaseDate.toString());
-                if (randomMovie.GetPosterPath() != null)
+                else
                 {
-                    Picasso.with(context).load(getString(R.string.image_URL) + randomMovie.GetPosterPath()).into(randomPoster);
+                    ShowSnackbar("Blocked adult database entry.", ((Activity)context).getWindow().findViewById(android.R.id.content));
                 }
             }
         });

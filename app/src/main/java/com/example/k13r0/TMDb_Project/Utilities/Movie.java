@@ -65,6 +65,9 @@ public class Movie
     private double voteAverage;
     public double GetVoteAverage() { return this.voteAverage; }
 
+    private boolean adult;
+    public boolean GetAdult() { return this.adult; }
+
     /*
      * Constructor	: Movie()
      * Description	: Default constructor for the movie class.
@@ -81,6 +84,7 @@ public class Movie
         popularity = 0;
         voteCount = 0;
         voteAverage = 0;
+        adult = false;
     }
 
     /*
@@ -102,6 +106,8 @@ public class Movie
             popularity = details.getDouble("popularity");
             voteCount = details.getInt("vote_count");
             voteAverage = details.getDouble("vote_average");
+            adult = details.getBoolean("adult");
+
         }
         catch (JSONException exception)
         {
