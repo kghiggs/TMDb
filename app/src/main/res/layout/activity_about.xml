@@ -4,7 +4,11 @@
     Date	    : Feb. 3rd, 2019
     Project		: Assignment 1
     File	    : activity_about.xml
-    Description :
+    Description : Displays the following details for the user to see when the main menu's "About"
+                  button is clicked:
+                    - version number
+                    - version date
+                    - authors
 -->
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -25,9 +29,9 @@
         android:layout_marginRight="8dp"
         android:layout_marginBottom="8dp"
         android:gravity="center"
-        android:textColor="@color/colorBackgroundLight"
         android:lines="9"
         android:text="TMDb App v0.1.\nFebruary 2, 2019\n\nDevelopers:\nKieron Higgs\nArie Kraayenbrink\n Bailey Mills\nKyle Horsley"
+        android:textColor="@color/colorBackgroundLight"
         android:textSize="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
