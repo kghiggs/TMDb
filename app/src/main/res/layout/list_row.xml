@@ -12,7 +12,9 @@
     android:layout_height="wrap_content"
     android:gravity="center_vertical"
     android:orientation="horizontal"
-    android:id="@+id/list_row">
+    android:id="@+id/list_row"
+    android:clickable="true"
+    android:onClick="onClickMethod">
 
     <!-- Movie poster image -->
     <ImageView
@@ -46,6 +48,8 @@
             android:layout_height="wrap_content"
             android:text="TextView"
             android:textSize="14sp" />
+
+
     </LinearLayout>
 
 </LinearLayout>

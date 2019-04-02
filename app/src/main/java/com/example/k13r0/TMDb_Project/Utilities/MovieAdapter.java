@@ -8,9 +8,12 @@
  */
 
 package com.example.k13r0.TMDb_Project.Utilities;
+import com.example.k13r0.TMDb_Project.Activities.MovieDetails;
 import com.example.k13r0.TMDb_Project.R;
-
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
+import android.widget.LinearLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -31,7 +34,9 @@ public class MovieAdapter extends ArrayAdapter<Movie>
 {
     Context context;
     int resource;
+    Activity activity;
     ArrayList<Movie> movies;
+
 
     /*
      * Adapter  	: MovieAdapter()
@@ -46,7 +51,6 @@ public class MovieAdapter extends ArrayAdapter<Movie>
         this.context = context;
         this.resource = resource;
         this.movies = new ArrayList<>();
-
         for (int i = 0; i < movies.size(); i++)
         {
             this.movies.add(movies.get(i));
@@ -87,6 +91,19 @@ public class MovieAdapter extends ArrayAdapter<Movie>
         ImageView thumbnail = convertView.findViewById(R.id.thumbnail);
 
         titleAndYear.setText(movie.GetTitle());
+
+        LinearLayout listRow = convertView.findViewById(R.id.list_row);
+        listRow.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent detailsIntent = new Intent(context, MovieDetails.class);
+                        // detailsIntent.putExtra("selectedMovie", movies.get(v.getId()));
+                        context.startActivity(detailsIntent);
+                    }
+                }
+        );
+
 
         if (movie.GetReleaseDate() != null)
         {

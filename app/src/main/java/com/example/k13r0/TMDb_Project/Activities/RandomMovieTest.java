@@ -92,7 +92,6 @@ public class RandomMovieTest extends AppCompatActivity
 
         if (randomMovie.GetAdult() == false)
         {
-
             randomMovieTitle.setText(randomMovie.GetTitle());
             randomOverview.setText(randomMovie.GetOverview());
 

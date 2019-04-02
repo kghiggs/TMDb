@@ -190,6 +190,7 @@ public class SearchMovies extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         switch (v.getId())
         {
+            // ASYNC Thread
             case R.id.btnSearch:
                 query = txtMovieSearch.getText().toString();
                 String HTMLquery = getString(R.string.query_URL) + query.replaceAll(" ", "%20");
