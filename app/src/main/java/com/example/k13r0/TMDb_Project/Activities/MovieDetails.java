@@ -19,8 +19,7 @@ public class MovieDetails extends AppCompatActivity
 
     /*
      * Function		: onCreate
-     * Description	: Sets up the random movie button function call and the view references
-     *                required to complete the operations of the button.
+     * Description	: 
      * Parameters	: Bundle savedInstanceState
      * Returns		: N/A
      */
