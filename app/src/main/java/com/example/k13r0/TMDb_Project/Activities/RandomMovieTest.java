@@ -1,6 +1,6 @@
 /*
  *
- * Author		: Kieron Higgs
+ * Author		: Kieron Higgs, Bailey Mills
  * Date			: Jan. 25, 2019
  * Project		: Assignment 1
  * File			: RandomMovieTest.java
@@ -47,8 +47,8 @@ public class RandomMovieTest extends AppCompatActivity
 
     /*
      * Function		: onCreate
-     * Description	: Requests a random page from the database and displays information relating to it; allows user to
-     *                repeat the process with the press of a button.
+     * Description	: Sets up the random movie button function call and the view references
+     *                required to complete the operations of the button.
      * Parameters	: Bundle savedInstanceState
      * Returns		: N/A
      */
@@ -79,7 +79,13 @@ public class RandomMovieTest extends AppCompatActivity
         LoadRandomMovie(randomButton);
     }
 
-
+    /*
+     * Function		: onCreate
+     * Description	: Requests a random page from the database and displays information relating to it; allows user to
+     *                repeat the process with the press of a button.
+     * Parameters	: View v : the view to create the snackbar notification for
+     * Returns		: N/A
+     */
     private void LoadRandomMovie(View v){
         Movie.GetRandomMovie(guestSession, requestQueue, context);
         Movie randomMovie = guestSession.GetRandomMovieObject(context);

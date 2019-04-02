@@ -14,6 +14,7 @@
     android:orientation="horizontal"
     android:id="@+id/list_row">
 
+    <!-- Movie poster image -->
     <ImageView
         android:id="@+id/thumbnail"
         android:layout_width="100dp"
@@ -21,6 +22,7 @@
         android:layout_weight="1"
         app:srcCompat="@android:drawable/btn_dialog" />
 
+    <!-- Container for movie details -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -28,6 +30,7 @@
         android:gravity="center_vertical"
         android:orientation="vertical">
 
+        <!-- Title, Year -->
         <TextView
             android:id="@+id/titleAndYear"
             android:layout_width="match_parent"
@@ -36,6 +39,7 @@
             android:textSize="24sp"
             android:textStyle="bold" />
 
+        <!-- Additional Details -->
         <TextView
             android:id="@+id/moreInfo"
             android:layout_width="match_parent"
