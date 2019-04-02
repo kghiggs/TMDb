@@ -34,7 +34,6 @@ public class MovieAdapter extends ArrayAdapter<Movie>
 {
     Context context;
     int resource;
-    Activity activity;
     ArrayList<Movie> movies;
 
 
@@ -77,7 +76,7 @@ public class MovieAdapter extends ArrayAdapter<Movie>
      * Return       : View - the View originally passed to the method; to be re-used for subsequent elements to populate the list with
      */
     @Override
-    public View getView(int position, View convertView, ViewGroup parent)
+    public View getView(final int position, View convertView, ViewGroup parent)
     {
         Movie movie = movies.get(position);
 
@@ -98,12 +97,11 @@ public class MovieAdapter extends ArrayAdapter<Movie>
                     @Override
                     public void onClick(View v) {
                         Intent detailsIntent = new Intent(context, MovieDetails.class);
-                        // detailsIntent.putExtra("selectedMovie", movies.get(v.getId()));
+                        detailsIntent.putExtra("selectedMovie", movies.get(position));
                         context.startActivity(detailsIntent);
                     }
                 }
         );
-
 
         if (movie.GetReleaseDate() != null)
         {
@@ -112,8 +110,6 @@ public class MovieAdapter extends ArrayAdapter<Movie>
             moreInfo.setText(dateString);
         }
 
-        //TextView randomReleaseDate = findViewById(R.id.randomReleaseDate);
-        //randomReleaseDate.setText(randomMovie.releaseDate.toString());
         if (movie.GetPosterPath() != null)
         {
             Picasso.with(context).load(context.getString(R.string.image_URL) + movie.GetPosterPath()).into(thumbnail);

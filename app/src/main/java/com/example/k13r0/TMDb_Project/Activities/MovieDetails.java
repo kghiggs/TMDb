@@ -9,6 +9,7 @@ import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.Volley;
 import com.example.k13r0.TMDb_Project.R;
 import com.example.k13r0.TMDb_Project.Utilities.Session;
+import com.example.k13r0.TMDb_Project.Utilities.Movie;
 
 public class MovieDetails extends AppCompatActivity
 {
@@ -28,5 +29,7 @@ public class MovieDetails extends AppCompatActivity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_movie_details);
+        Bundle data = getIntent().getExtras();
+        Movie selectedMovie = (Movie) data.getParcelable("selectedMovie");
     }
 }

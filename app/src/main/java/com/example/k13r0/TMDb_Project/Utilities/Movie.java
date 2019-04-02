@@ -34,7 +34,7 @@ import java.text.ParseException;
  * Class		: Movie
  * Description	: This class is used to model a movie using object-oriented programming principles.
  */
-public class Movie
+public class Movie implements Parcelable
 {
 
     private int ID;
@@ -242,7 +242,7 @@ public class Movie
         );
         requestQueue.add(requestLatestMovie);
     }
-/*
+
     @Override
     public int describeContents() {
         return 0;
@@ -255,28 +255,19 @@ public class Movie
         parcel.writeString(overview);
         parcel.writeString(posterPath);
         parcel.writeString(backdropPath);
-        // parcel.writeDate(releaseDate);
+        parcel.writeLong(releaseDate.getTime());
+    }
 
-    }
-    /*
-    ID = -1;
-    title = null;
-    overview = null;
-    posterPath = null;
-    backdropPath = null;
-    releaseDate = null;
-    videoAvailable = false;
-    popularity = 0;
-    voteCount = 0;
-    voteAverage = 0;
-    adult = false;
     protected Movie(Parcel in) {
-        firstName = in.readString();
-        lastName = in.readString();
-        age = in.readInt();
+        ID = in.readInt();
+        title = in.readString();
+        overview = in.readString();
+        posterPath = in.readString();
+        backdropPath = in.readString();
+        releaseDate = new Date(in.readLong());
     }
-*/
-    /*
+
+
     public static final Creator<Movie> CREATOR = new Creator<Movie>() {
         @Override
         public Movie createFromParcel(Parcel in) {
@@ -289,6 +280,4 @@ public class Movie
         }
     };
 
-}
-*/
 }
