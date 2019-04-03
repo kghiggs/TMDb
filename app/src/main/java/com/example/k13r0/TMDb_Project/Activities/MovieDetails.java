@@ -1,5 +1,6 @@
 package com.example.k13r0.TMDb_Project.Activities;
 
+import android.app.ActionBar;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -14,8 +15,11 @@ import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.View;
+import android.view.ViewTreeObserver;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -48,6 +52,8 @@ public class MovieDetails extends AppCompatActivity
     private ImageView imgBackground;
 
     private ConstraintLayout screenBackground;
+
+    private ScrollView scroller;
 
     private int backgroundColour;
 
@@ -189,6 +195,9 @@ public class MovieDetails extends AppCompatActivity
             Picasso.with(context).load(getString(R.string.image_URL) + posterPath).into(imgPoster);
             imageToGetColourFrom = posterPath;
         }
+        else {
+            imgPoster.setImageDrawable(null);
+        }
 
         // Background Image
         String backdropPath = movie.GetBackdropPath();
@@ -196,6 +205,14 @@ public class MovieDetails extends AppCompatActivity
         {
             Picasso.with(context).load(getString(R.string.image_URL) + backdropPath).into(imgBackground);
             imageToGetColourFrom = backdropPath;
+        }
+        else {
+            imgBackground.setImageDrawable(null);
+
+            LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+            lp.setMargins(0, 20, 0, 0);
+            lp.width = ActionBar.LayoutParams.MATCH_PARENT;
+            imgPoster.setLayoutParams(lp);
         }
 
 
@@ -248,9 +265,10 @@ public class MovieDetails extends AppCompatActivity
             }
         }
 
-        r = (int)(r / count);
-        g = (int)(g / count);
-        b = (int)(b / count);
+        float modifier = 0.6f;
+        r = (int)(r / count * modifier);
+        g = (int)(g / count * modifier);
+        b = (int)(b / count * modifier);
 
         return Color.rgb(r, g, b);
     }
