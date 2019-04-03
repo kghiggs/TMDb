@@ -238,7 +238,7 @@ public class MovieDetails extends AppCompatActivity
     }
 
 
-    private int GetAverageColour (Bitmap bitmap){
+    public static int GetAverageColour (Bitmap bitmap){
         int r = 0;
         int g = 0;
         int b = 0;
