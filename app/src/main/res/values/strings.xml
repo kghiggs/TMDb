@@ -33,7 +33,7 @@
     <string name="default_description">[Description]</string>
     <string name="about_btn">About</string>
     <string name="search_btn">Search Movies</string>
-    <string name="random_btn">Random Movies</string>
+    <string name="favorites_btn">Favorite Movies</string>
     <string name="upcoming_btn">Upcoming Movies</string>
     <string name="get_random_btn">Get Random Movie</string>
     <string name="tmdb_logo">The Movie Database Logo</string>

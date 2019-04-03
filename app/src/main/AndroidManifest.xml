@@ -33,9 +33,6 @@
         <activity android:name="com.example.k13r0.TMDb_Project.Activities.SearchResults" android:label="Search Results">
         </activity>
 
-        <activity android:name="com.example.k13r0.TMDb_Project.Activities.RandomMovieTest" android:label="Random Movies">
-        </activity>
-
         <activity android:name="com.example.k13r0.TMDb_Project.Activities.UpcomingMovies" android:label="Upcoming Movies">
         </activity>
 
@@ -43,6 +40,9 @@
         </activity>
 
         <activity android:name="com.example.k13r0.TMDb_Project.Activities.MovieDetails" android:label="Movie Details" android:theme="@style/PopUpTheme">
+        </activity>
+
+        <activity android:name="com.example.k13r0.TMDb_Project.Activities.FavoriteMovies" android:label="Movie Details" android:theme="@style/PopUpTheme">
         </activity>
 
     </application>

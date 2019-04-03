@@ -42,6 +42,7 @@ public class Movie implements Parcelable
 
     private String title;
     public String GetTitle() { return this.title; }
+    public void SetTitle(String newTitle) { this.title = newTitle; }
 
     private String overview;
     public String GetOverview() { return this.overview; }
