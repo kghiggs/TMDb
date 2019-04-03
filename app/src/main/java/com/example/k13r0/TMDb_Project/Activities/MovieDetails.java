@@ -31,6 +31,7 @@ import com.squareup.picasso.Picasso;
 import com.squareup.picasso.Target;
 
 import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import static com.example.k13r0.TMDb_Project.Utilities.MakeSnackbar.ShowSnackbar;
 
@@ -78,7 +79,7 @@ public class MovieDetails extends AppCompatActivity
         buttonAddFav.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                addItem();
+                addItem(movie);
             }
         });
 
@@ -94,17 +95,22 @@ public class MovieDetails extends AppCompatActivity
      * Parameters	: N/A
      * Returns		: N/A
      */
-    private void addItem()
+    private void addItem(Movie movie)
     {
         Context context = getApplicationContext();
         CharSequence saveMessage = "Movie saved to favourites";
         int duration = Toast.LENGTH_SHORT;
 
-        String name = txtTitle.getText().toString();
+        //String name = txtTitle.getText().toString();
+        String name = movie.GetTitle();
+        String overview = movie.GetOverview();
+        String posterPath = movie.GetPosterPath();
+        String backdropPath = movie.GetBackdropPath();
+        String releaseDate = movie.GetReleaseDate();
 
         //Check if movie is already in database.
-        //boolean exists = CheckDataExists(FavMovies.MovieEntry.TABLE_NAME, FavMovies.MovieEntry.COLUMN_NAME, name);
-        //Toast.makeText(context, String.valueOf(exists), duration).show();
+//        boolean exists = CheckDataExists(FavMovies.MovieEntry.TABLE_NAME, FavMovies.MovieEntry.COLUMN_NAME, name);
+//        Toast.makeText(context, String.valueOf(exists), duration).show();
 
         if(1 == 2)  //fix this
         {
@@ -114,6 +120,10 @@ public class MovieDetails extends AppCompatActivity
         else if (name.trim().length() != 0){
             ContentValues cv = new ContentValues();
             cv.put(FavMovies.MovieEntry.COLUMN_NAME, name);
+            cv.put(FavMovies.MovieEntry.COLUMN_OVERVIEW, overview);
+            cv.put(FavMovies.MovieEntry.COLUMN_POSTER_PATH, posterPath);
+            cv.put(FavMovies.MovieEntry.COLUMN_BACKDROP_PATH, backdropPath);
+            cv.put(FavMovies.MovieEntry.COLUMN_RELEASE_DATE, releaseDate);
 
             long result = mDatabase.insert(FavMovies.MovieEntry.TABLE_NAME, null, cv);
 
