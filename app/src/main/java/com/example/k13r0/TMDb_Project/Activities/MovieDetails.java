@@ -137,7 +137,7 @@ public class MovieDetails extends AppCompatActivity
         String query = "SELECT " + dbField +
                 " FROM " + TableName +
                 " WHERE " +
-                dbField + " = " + fieldValue +
+                dbField + " = '" + fieldValue + "'" +
                 ";";
 
         Cursor cursor = mDatabase.rawQuery(query, null);
