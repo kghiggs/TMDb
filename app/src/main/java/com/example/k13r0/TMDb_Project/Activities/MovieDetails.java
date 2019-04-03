@@ -16,6 +16,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.Volley;
@@ -83,14 +84,37 @@ public class MovieDetails extends AppCompatActivity
         LoadRandomMovie(selectedMovie);
     }
 
+
+
+    /*
+     * Function		: addItem()
+     * Description	: Adds a movie title to the database
+     * Author       : Arie
+     * Parameters	: N/A
+     * Returns		: N/A
+     */
     private void addItem()
     {
+        Context context = getApplicationContext();
+        CharSequence saveMessage = "Movie saved to favourites";
+        int duration = Toast.LENGTH_SHORT;
+
         String name = txtTitle.getText().toString();
 
-        ContentValues cv = new ContentValues();
-        cv.put(FavMovies.MovieEntry.COLUMN_NAME, name);
+        //Check if movie is already in database.
+        if(1 == 2)  //Fix this!!!
+        {
+            saveMessage = "Movie already in favourites";
+            duration = Toast.LENGTH_LONG;
+        }
+        else {
+            ContentValues cv = new ContentValues();
+            cv.put(FavMovies.MovieEntry.COLUMN_NAME, name);
 
-        mDatabase.insert(FavMovies.MovieEntry.TABLE_NAME, null, cv);
+            mDatabase.insert(FavMovies.MovieEntry.TABLE_NAME, null, cv);
+        }
+
+        Toast.makeText(context, saveMessage, duration).show();
     }
 
 
