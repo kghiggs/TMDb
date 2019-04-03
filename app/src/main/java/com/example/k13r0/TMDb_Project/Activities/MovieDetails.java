@@ -2,6 +2,7 @@ package com.example.k13r0.TMDb_Project.Activities;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.Color;
@@ -102,19 +103,52 @@ public class MovieDetails extends AppCompatActivity
         String name = txtTitle.getText().toString();
 
         //Check if movie is already in database.
-        if(1 == 2)  //Fix this!!!
+        //boolean exists = CheckDataExists(FavMovies.MovieEntry.TABLE_NAME, FavMovies.MovieEntry.COLUMN_NAME, name);
+        //Toast.makeText(context, String.valueOf(exists), duration).show();
+
+        if(1 == 2)  //fix this
         {
             saveMessage = "Movie already in favourites";
             duration = Toast.LENGTH_LONG;
         }
-        else {
+        else if (name.trim().length() != 0){
             ContentValues cv = new ContentValues();
             cv.put(FavMovies.MovieEntry.COLUMN_NAME, name);
 
-            mDatabase.insert(FavMovies.MovieEntry.TABLE_NAME, null, cv);
+            long result = mDatabase.insert(FavMovies.MovieEntry.TABLE_NAME, null, cv);
+
+            if (result < 0)
+            {
+                saveMessage = "Error: Failed to save movie to favourites";
+                duration = Toast.LENGTH_LONG;
+            }
+        }
+        else
+        {
+            saveMessage = "Error: Failed to save, no movie name provided";
+            duration = Toast.LENGTH_LONG;
         }
 
         Toast.makeText(context, saveMessage, duration).show();
+    }
+
+    private boolean CheckDataExists(String TableName, String dbField, String fieldValue)
+    {
+        String query = "SELECT " + dbField +
+                " FROM " + TableName +
+                " WHERE " +
+                dbField + " = " + fieldValue +
+                ";";
+
+        Cursor cursor = mDatabase.rawQuery(query, null);
+        if (cursor.getCount() <= 0)
+        {
+            cursor.close();
+            return false;
+        }
+
+        cursor.close();
+        return true;
     }
 
 
