@@ -70,7 +70,7 @@ public class MovieDetails extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_movie_details);
         Bundle data = getIntent().getExtras();
-        Movie selectedMovie = (Movie) data.getParcelable("selectedMovie");
+        final Movie selectedMovie = (Movie) data.getParcelable("selectedMovie");
 
         txtTitle = findViewById(R.id.txtTitle);
         txtDescription = findViewById(R.id.txtDescription);
@@ -86,7 +86,7 @@ public class MovieDetails extends AppCompatActivity
         buttonAddFav.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                addItem(movie);
+                addItem(selectedMovie);
             }
         });
 
