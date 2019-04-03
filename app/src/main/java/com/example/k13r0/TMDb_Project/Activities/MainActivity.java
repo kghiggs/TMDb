@@ -32,7 +32,6 @@ import com.example.k13r0.TMDb_Project.R;
  */
 public class MainActivity extends AppCompatActivity
 {
-
     public Activity mainActivity;
     public Context mainContext;
     public View mainActivityView;
@@ -94,13 +93,13 @@ public class MainActivity extends AppCompatActivity
             }
         });
 
-        Button randomMovieButton = findViewById(R.id.randomMovieButton);
+        Button randomMovieButton = findViewById(R.id.favoritesButton);
         randomMovieButton.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View v)
             {
-                startActivity(new Intent(MainActivity.this, RandomMovieTest.class));
+                startActivity(new Intent(MainActivity.this, FavoriteMovies.class));
             }
         });
     }

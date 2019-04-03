@@ -43,15 +43,15 @@
         android:layout_marginBottom="12dp"
         android:text="@string/search_btn"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/randomMovieButton"
+        app:layout_constraintEnd_toStartOf="@+id/favoritesButton"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/randomMovieButton"
+        android:id="@+id/favoritesButton"
         style="@style/buttonStyle"
         android:layout_width="100dp"
         android:layout_height="60dp"
-        android:text="@string/random_btn"
+        android:text="@string/favorites_btn"
         app:layout_constraintEnd_toStartOf="@+id/upcomingButton"
         app:layout_constraintStart_toEndOf="@+id/searchButton"
         app:layout_constraintTop_toTopOf="@+id/searchButton" />
@@ -63,7 +63,7 @@
         android:layout_height="60dp"
         android:text="@string/upcoming_btn"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/randomMovieButton"
+        app:layout_constraintStart_toEndOf="@+id/favoritesButton"
         app:layout_constraintTop_toTopOf="@+id/searchButton" />
 
     <ImageView
