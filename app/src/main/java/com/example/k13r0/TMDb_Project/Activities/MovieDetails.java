@@ -34,6 +34,7 @@ import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 import com.squareup.picasso.Target;
 
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -112,7 +113,9 @@ public class MovieDetails extends AppCompatActivity
         String overview = movie.GetOverview();
         String posterPath = movie.GetPosterPath();
         String backdropPath = movie.GetBackdropPath();
-        String releaseDate = movie.GetReleaseDate();
+
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss");
+        String releaseDate = dateFormat.format(movie.GetReleaseDate());
 
         //Check if movie is already in database.
 //        boolean exists = CheckDataExists(FavMovies.MovieEntry.TABLE_NAME, FavMovies.MovieEntry.COLUMN_NAME, name);
