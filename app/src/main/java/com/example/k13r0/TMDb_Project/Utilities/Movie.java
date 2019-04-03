@@ -9,6 +9,8 @@
 
 package com.example.k13r0.TMDb_Project.Utilities;
 
+import android.os.Parcelable;
+import android.os.Parcel;
 import android.app.Activity;
 import android.content.Context;
 import android.util.Log;
@@ -32,7 +34,7 @@ import java.text.ParseException;
  * Class		: Movie
  * Description	: This class is used to model a movie using object-oriented programming principles.
  */
-public class Movie
+public class Movie implements Parcelable
 {
 
     private int ID;
@@ -40,6 +42,7 @@ public class Movie
 
     private String title;
     public String GetTitle() { return this.title; }
+    public void SetTitle(String newTitle) { this.title = newTitle; }
 
     private String overview;
     public String GetOverview() { return this.overview; }
@@ -52,18 +55,6 @@ public class Movie
 
     private Date releaseDate;
     public Date GetReleaseDate() { return this.releaseDate; }
-
-    private boolean videoAvailable;
-    public boolean VideoAvailable() { return this.videoAvailable; }
-
-    private double popularity;
-    public double GetPopularity() { return this.popularity; }
-
-    private int voteCount;
-    public int GetVoteCount() { return this.voteCount; }
-
-    private double voteAverage;
-    public double GetVoteAverage() { return this.voteAverage; }
 
     private boolean adult;
     public boolean GetAdult() { return this.adult; }
@@ -80,10 +71,6 @@ public class Movie
         posterPath = null;
         backdropPath = null;
         releaseDate = null;
-        videoAvailable = false;
-        popularity = 0;
-        voteCount = 0;
-        voteAverage = 0;
         adult = false;
     }
 
@@ -102,10 +89,6 @@ public class Movie
             posterPath = details.getString("poster_path");
             backdropPath = details.getString("backdrop_path");
             releaseDate = new SimpleDateFormat("yyyy-MM-DD").parse(details.getString("release_date"));
-            videoAvailable = details.getBoolean("video");
-            popularity = details.getDouble("popularity");
-            voteCount = details.getInt("vote_count");
-            voteAverage = details.getDouble("vote_average");
             adult = details.getBoolean("adult");
 
         }
@@ -260,4 +243,42 @@ public class Movie
         );
         requestQueue.add(requestLatestMovie);
     }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeInt(ID);
+        parcel.writeString(title);
+        parcel.writeString(overview);
+        parcel.writeString(posterPath);
+        parcel.writeString(backdropPath);
+        parcel.writeLong(releaseDate.getTime());
+    }
+
+    protected Movie(Parcel in) {
+        ID = in.readInt();
+        title = in.readString();
+        overview = in.readString();
+        posterPath = in.readString();
+        backdropPath = in.readString();
+        releaseDate = new Date(in.readLong());
+    }
+
+
+    public static final Creator<Movie> CREATOR = new Creator<Movie>() {
+        @Override
+        public Movie createFromParcel(Parcel in) {
+            return new Movie(in);
+        }
+
+        @Override
+        public Movie[] newArray(int size) {
+            return new Movie[size];
+        }
+    };
+
 }

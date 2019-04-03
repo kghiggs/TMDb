@@ -8,9 +8,12 @@
  */
 
 package com.example.k13r0.TMDb_Project.Utilities;
+import com.example.k13r0.TMDb_Project.Activities.MovieDetails;
 import com.example.k13r0.TMDb_Project.R;
-
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
+import android.widget.LinearLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,6 +36,7 @@ public class MovieAdapter extends ArrayAdapter<Movie>
     int resource;
     ArrayList<Movie> movies;
 
+
     /*
      * Adapter  	: MovieAdapter()
      * Description	: This class is used to adapt the data within a Movie object to an ArrayList for display in a ListView.
@@ -46,7 +50,6 @@ public class MovieAdapter extends ArrayAdapter<Movie>
         this.context = context;
         this.resource = resource;
         this.movies = new ArrayList<>();
-
         for (int i = 0; i < movies.size(); i++)
         {
             this.movies.add(movies.get(i));
@@ -73,7 +76,7 @@ public class MovieAdapter extends ArrayAdapter<Movie>
      * Return       : View - the View originally passed to the method; to be re-used for subsequent elements to populate the list with
      */
     @Override
-    public View getView(int position, View convertView, ViewGroup parent)
+    public View getView(final int position, View convertView, ViewGroup parent)
     {
         Movie movie = movies.get(position);
 
@@ -88,6 +91,18 @@ public class MovieAdapter extends ArrayAdapter<Movie>
 
         titleAndYear.setText(movie.GetTitle());
 
+        LinearLayout listRow = convertView.findViewById(R.id.list_row);
+        listRow.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent detailsIntent = new Intent(context, MovieDetails.class);
+                        detailsIntent.putExtra("selectedMovie", movies.get(position));
+                        context.startActivity(detailsIntent);
+                    }
+                }
+        );
+
         if (movie.GetReleaseDate() != null)
         {
             SimpleDateFormat dateFormat = new SimpleDateFormat("EEE. MMMM dd");
@@ -95,8 +110,6 @@ public class MovieAdapter extends ArrayAdapter<Movie>
             moreInfo.setText(dateString);
         }
 
-        //TextView randomReleaseDate = findViewById(R.id.randomReleaseDate);
-        //randomReleaseDate.setText(randomMovie.releaseDate.toString());
         if (movie.GetPosterPath() != null)
         {
             Picasso.with(context).load(context.getString(R.string.image_URL) + movie.GetPosterPath()).into(thumbnail);

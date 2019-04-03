@@ -1,12 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--
-    Author      : Kieron Higgs
-    Date	    : Jan. 30th, 2019
-    Project		: Assignment 1
-    File	    : activity_search_results.xml
-    Description : The format for a list of search results.
--->
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/SearchResults"
@@ -15,18 +9,7 @@
     android:orientation="vertical"
     tools:context=".Activities.SearchResults">
 
-    <!-- App version details -->
-    <TextView
-        android:id="@+id/version"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/version"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-
-    <!-- List of search results (default: empty) -->
+    <!-- List of favorite movies:  -->
     <ListView
         android:id="@android:id/list"
         android:layout_width="wrap_content"
@@ -36,5 +19,4 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
     </ListView>
-
 </android.support.constraint.ConstraintLayout>
