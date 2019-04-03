@@ -10,8 +10,13 @@
 package com.example.k13r0.TMDb_Project.Activities;
 
 import android.os.Bundle;
+import android.support.annotation.ColorInt;
 import android.support.v7.app.AppCompatActivity;
 import android.util.DisplayMetrics;
+import android.view.View;
+import android.content.Intent;
+import android.net.Uri;
+import android.widget.Button;
 
 import com.example.k13r0.TMDb_Project.R;
 
@@ -19,8 +24,10 @@ import com.example.k13r0.TMDb_Project.R;
  * Class		: About
  * Description	:
  */
-public class About extends AppCompatActivity {
+public class About extends AppCompatActivity implements View.OnClickListener
+{
 
+    private Button tmdbButton;
     /*
      * Function		: onCreate
      * Description	:
@@ -40,5 +47,25 @@ public class About extends AppCompatActivity {
         int height = dm.heightPixels;
 
         getWindow().setLayout((int)(width * 0.8), (int)(height * 0.4));
+
+        tmdbButton = findViewById(R.id.tmdbButton);
+
+        tmdbButton.setOnClickListener(this);
+    }
+
+    @Override
+    public void onClick(View v)
+    {
+        switch (v.getId())
+        {
+            case R.id.tmdbButton:
+
+                String url = "https://www.themoviedb.org";
+                Intent intent = new Intent(Intent.ACTION_VIEW);
+                intent.setData(Uri.parse(url));
+                startActivity(intent);
+                break;
+        }
+
     }
 }

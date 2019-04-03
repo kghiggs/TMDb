@@ -10,7 +10,6 @@
 package com.example.k13r0.TMDb_Project.Utilities;
 import com.example.k13r0.TMDb_Project.Activities.MovieDetails;
 import com.example.k13r0.TMDb_Project.R;
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.widget.LinearLayout;
