@@ -104,9 +104,7 @@ public class MovieAdapter extends ArrayAdapter<Movie>
 
         if (movie.GetReleaseDate() != null)
         {
-            SimpleDateFormat dateFormat = new SimpleDateFormat("EEE. MMMM dd");
-            String dateString = dateFormat.format(movie.GetReleaseDate());
-            moreInfo.setText(dateString);
+            moreInfo.setText(movie.GetReleaseDate());
         }
 
         if (movie.GetPosterPath() != null)

@@ -8,7 +8,6 @@
  */
 
 package com.example.k13r0.TMDb_Project.Utilities;
-
 import android.os.Parcelable;
 import android.os.Parcel;
 import android.app.Activity;
@@ -53,8 +52,8 @@ public class Movie implements Parcelable
     private String backdropPath;
     public String GetBackdropPath() { return this.backdropPath; }
 
-    private Date releaseDate;
-    public Date GetReleaseDate() { return this.releaseDate; }
+    private String releaseDate;
+    public String GetReleaseDate() { return this.releaseDate; }
 
     private boolean adult;
     public boolean GetAdult() { return this.adult; }
@@ -88,7 +87,7 @@ public class Movie implements Parcelable
             overview = details.getString("overview");
             posterPath = details.getString("poster_path");
             backdropPath = details.getString("backdrop_path");
-            releaseDate = new SimpleDateFormat("yyyy-MM-DD").parse(details.getString("release_date"));
+            releaseDate = details.getString("release_date");
             adult = details.getBoolean("adult");
 
         }
@@ -96,10 +95,6 @@ public class Movie implements Parcelable
         {
             ShowSnackbar(context.getString(R.string.movie_detail_json_ERR), ((Activity)context).getWindow().findViewById(android.R.id.content));
             Log.d(context.getString(R.string.movie_detail_json_ERR), exception.toString());
-        }
-        catch (ParseException exception)
-        {
-            Log.d(context.getString(R.string.movie_detail_parse_ERR), exception.toString());
         }
     }
 
@@ -256,7 +251,7 @@ public class Movie implements Parcelable
         parcel.writeString(overview);
         parcel.writeString(posterPath);
         parcel.writeString(backdropPath);
-        parcel.writeLong(releaseDate.getTime());
+        parcel.writeString(releaseDate);
     }
 
     protected Movie(Parcel in) {
@@ -265,7 +260,7 @@ public class Movie implements Parcelable
         overview = in.readString();
         posterPath = in.readString();
         backdropPath = in.readString();
-        releaseDate = new Date(in.readLong());
+        releaseDate = in.readString();
     }
 
 
