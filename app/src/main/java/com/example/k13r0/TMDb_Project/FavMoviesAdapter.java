@@ -25,7 +25,7 @@ public class FavMoviesAdapter extends RecyclerView.Adapter<FavMoviesAdapter.FavM
         public FavMovieViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            nameText = itemView.findViewById(R.id.favTitle);
+            // nameText = itemView.findViewById(R.id.favTitle);
         }
     }
 
