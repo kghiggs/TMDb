@@ -10,7 +10,6 @@ public class FavMovies {
     {
         public static final String TABLE_NAME = "favMovies";
         public static final String COLUMN_NAME = "name";
-        public static final String COLUMN_ID = "id";
         public static final String COLUMN_TIMESTAMP = "timestamp";
     }
 }
