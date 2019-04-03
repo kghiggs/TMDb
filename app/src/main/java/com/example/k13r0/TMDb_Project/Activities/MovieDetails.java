@@ -1,6 +1,8 @@
 package com.example.k13r0.TMDb_Project.Activities;
 
+import android.content.ContentValues;
 import android.content.Context;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
@@ -11,11 +13,14 @@ import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.Volley;
+import com.example.k13r0.TMDb_Project.FavMovies;
+import com.example.k13r0.TMDb_Project.FavMoviesDBHelper;
 import com.example.k13r0.TMDb_Project.R;
 import com.example.k13r0.TMDb_Project.Utilities.Session;
 import com.example.k13r0.TMDb_Project.Utilities.Movie;
@@ -29,6 +34,7 @@ import static com.example.k13r0.TMDb_Project.Utilities.MakeSnackbar.ShowSnackbar
 
 public class MovieDetails extends AppCompatActivity
 {
+    private SQLiteDatabase mDatabase;
     private Context context;
     private RequestQueue requestQueue;
     private Session guestSession;
@@ -63,7 +69,28 @@ public class MovieDetails extends AppCompatActivity
 
         screenBackground = findViewById(R.id.mainActivity);
 
+        FavMoviesDBHelper dbHelper = new FavMoviesDBHelper(this);
+        mDatabase = dbHelper.getWritableDatabase();
+
+        Button buttonAddFav = findViewById(R.id.btnFav);
+        buttonAddFav.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                addItem();
+            }
+        });
+
         LoadRandomMovie(selectedMovie);
+    }
+
+    private void addItem()
+    {
+        String name = txtTitle.getText().toString();
+
+        ContentValues cv = new ContentValues();
+        cv.put(FavMovies.MovieEntry.COLUMN_NAME, name);
+
+        mDatabase.insert(FavMovies.MovieEntry.TABLE_NAME, null, cv);
     }
 
 
