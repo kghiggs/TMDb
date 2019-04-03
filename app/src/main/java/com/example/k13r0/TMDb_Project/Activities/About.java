@@ -68,11 +68,4 @@ public class About extends AppCompatActivity implements View.OnClickListener
         }
 
     }
-
-        // This code uses a WebView widget to open the browser within the app
-        /*
-        Intent out = new Intent(getApplicationContext(), ItemWebView.class);
-        out.putExtra("link", in.getStringExtra("link"));
-        startActivity(out);
-        */
 }
