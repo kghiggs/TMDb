@@ -30,7 +30,7 @@
         android:layout_marginBottom="8dp"
         android:gravity="center"
         android:lines="9"
-        android:text="TMDb App v0.1.\nFebruary 2, 2019\n\nDevelopers:\nKieron Higgs\nArie Kraayenbrink\n Bailey Mills\nKyle Horsley"
+        android:text="TMDb App v1.3.\nFebruary 2, 2019\n\nDevelopers:\nKieron Higgs\nArie Kraayenbrink\n Bailey Mills\nKyle Horsley"
         android:textColor="@color/colorBackgroundLight"
         android:textSize="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
