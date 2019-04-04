@@ -124,8 +124,31 @@ public class MovieDetails extends AppCompatActivity
      * Parameters	: Movie movie : The movie object
      * Returns		: N/A
      */
-    private void deleteItem(Movie selectedMovie) {
+    private boolean deleteItem(Movie selectedMovie) {
+        boolean result = false;
 
+        String query = "SELECT " +
+                FavMovies.MovieEntry._ID +
+                ", " + FavMovies.MovieEntry.COLUMN_NAME +
+                ", " + FavMovies.MovieEntry.COLUMN_OVERVIEW +
+                ", " + FavMovies.MovieEntry.COLUMN_POSTER_PATH +
+                ", " + FavMovies.MovieEntry.COLUMN_BACKDROP_PATH +
+                ", " + FavMovies.MovieEntry.COLUMN_RELEASE_DATE +
+                " FROM " + FavMovies.MovieEntry.TABLE_NAME +
+                " WHERE " +
+                FavMovies.MovieEntry.COLUMN_NAME + " = '" +
+                selectedMovie.GetTitle() + "';";
+
+        Cursor cursor = mDatabase.rawQuery(query, null);
+
+        if (cursor.moveToFirst())
+        {
+            result = mDatabase.delete(FavMovies.MovieEntry.TABLE_NAME, FavMovies.MovieEntry._ID  + " = " + Integer.parseInt(cursor.getString(0)), null) > 0;    //hope this is right, untested. TODO: check this!
+        }
+
+        cursor.close();
+
+        return result;
     }
 
 
