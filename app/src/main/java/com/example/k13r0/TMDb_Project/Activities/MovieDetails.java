@@ -85,36 +85,50 @@ public class MovieDetails extends AppCompatActivity
         mDatabase = dbHelper.getWritableDatabase();
 
         buttonAddFav = findViewById(R.id.btnFav);
+
+        // Update button text on load
+        UpdateButtonText(CheckDataExists(FavMovies.MovieEntry.TABLE_NAME, FavMovies.MovieEntry.COLUMN_NAME, selectedMovie.GetTitle()));
+
         buttonAddFav.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View v) {
 
-            boolean inDB = false;
+            boolean inDB = CheckDataExists(FavMovies.MovieEntry.TABLE_NAME, FavMovies.MovieEntry.COLUMN_NAME, selectedMovie.GetTitle());
 
             // Todo: check if in database
 
             //Check if movie is already saved.
             if (inDB)
             {
-                buttonAddFav.setText("Remove from favourites");
-
                 //remove the movie
                 deleteItem(selectedMovie);
 
-                //Reset button text
-                buttonAddFav.setText("@string/add_to_favourites");
             }
             else
             {
                 //add the movie
                 addItem(selectedMovie);
             }
+
+            UpdateButtonText(CheckDataExists(FavMovies.MovieEntry.TABLE_NAME, FavMovies.MovieEntry.COLUMN_NAME, selectedMovie.GetTitle()));
         }
         });
 
         LoadRandomMovie(selectedMovie);
     }
 
+
+
+    private void UpdateButtonText(boolean inDB)
+    {
+        if (inDB){
+            buttonAddFav.setText("Remove from favourites");
+        }
+        else{
+            //Reset button text
+            buttonAddFav.setText(getString(R.string.add_to_favourites));
+        }
+    }
 
 
     /*
