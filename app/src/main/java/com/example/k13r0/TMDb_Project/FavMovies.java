@@ -1,3 +1,14 @@
+/*
+ *
+ * Author		: Arie Kraayenbrink
+ * Date			: April, 2019
+ * Project		: Assignment 2
+ * File			: FavMovies.java
+ * Description	: This is where the column names for the favourite movies database are listed.
+ */
+
+
+
 package com.example.k13r0.TMDb_Project;
 
 import android.provider.BaseColumns;

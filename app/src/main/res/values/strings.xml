@@ -37,5 +37,6 @@
     <string name="upcoming_btn">Upcoming Movies</string>
     <string name="get_random_btn">Get Random Movie</string>
     <string name="tmdb_logo">The Movie Database Logo</string>
+    <string name="add_to_favourites">Add to Favourites</string>
 
 </resources>

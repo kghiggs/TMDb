@@ -57,6 +57,8 @@ public class MovieDetails extends AppCompatActivity
     private ScrollView scroller;
 
     private int backgroundColour;
+    Button buttonAddFav;
+
 
     /*
      * Function		: onCreate
@@ -82,12 +84,32 @@ public class MovieDetails extends AppCompatActivity
         FavMoviesDBHelper dbHelper = new FavMoviesDBHelper(this);
         mDatabase = dbHelper.getWritableDatabase();
 
-        Button buttonAddFav = findViewById(R.id.btnFav);
+        buttonAddFav = findViewById(R.id.btnFav);
         buttonAddFav.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        @Override
+        public void onClick(View v) {
+
+            boolean inDB = false;
+
+            // Todo: check if in database
+
+            //Check if movie is already saved.
+            if (inDB)
+            {
+                buttonAddFav.setText("Remove from favourites");
+
+                //remove the movie
+                deleteItem(selectedMovie);
+
+                //Reset button text
+                buttonAddFav.setText("@string/add_to_favourites");
+            }
+            else
+            {
+                //add the movie
                 addItem(selectedMovie);
             }
+        }
         });
 
         LoadRandomMovie(selectedMovie);
@@ -96,10 +118,23 @@ public class MovieDetails extends AppCompatActivity
 
 
     /*
+     * Function		: deleteItem()
+     * Description	: Removes a movie from the database
+     * Author       : Arie
+     * Parameters	: Movie movie : The movie object
+     * Returns		: N/A
+     */
+    private void deleteItem(Movie selectedMovie) {
+
+    }
+
+
+
+    /*
      * Function		: addItem()
      * Description	: Adds a movie title to the database
      * Author       : Arie
-     * Parameters	: N/A
+     * Parameters	: Movie movie : The movie object with the data to add to the database.
      * Returns		: N/A
      */
     private void addItem(Movie movie)
@@ -114,14 +149,14 @@ public class MovieDetails extends AppCompatActivity
         String posterPath = movie.GetPosterPath();
         String backdropPath = movie.GetBackdropPath();
 
-        DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss");
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd");
         String releaseDate = dateFormat.format(movie.GetReleaseDate());
 
         //Check if movie is already in database.
 //        boolean exists = CheckDataExists(FavMovies.MovieEntry.TABLE_NAME, FavMovies.MovieEntry.COLUMN_NAME, name);
 //        Toast.makeText(context, String.valueOf(exists), duration).show();
 
-        if(1 == 2)  //fix this
+        if(1 == 2)  // Todo: fix this
         {
             saveMessage = "Movie already in favourites";
             duration = Toast.LENGTH_LONG;
@@ -151,13 +186,23 @@ public class MovieDetails extends AppCompatActivity
         Toast.makeText(context, saveMessage, duration).show();
     }
 
+
+
+    /*
+     * Function		: CheckDataExists(String TableName, String dbField, String fieldValue)
+     * Description	: Checks if a movie is saved in the database
+     * Author       : Arie
+     * Parameters	: String TableName      : The table to check
+     *              : String dbField        : The field column to check
+     *              : String fieldValue     : The field value to look for
+     * Returns		: N/A
+     */
     private boolean CheckDataExists(String TableName, String dbField, String fieldValue)
     {
         String query = "SELECT " + dbField +
                 " FROM " + TableName +
                 " WHERE " +
-                dbField + " = '" + fieldValue + "'" +
-                ";";
+                dbField + " = '" + fieldValue + "';";
 
         Cursor cursor = mDatabase.rawQuery(query, null);
         if (cursor.getCount() <= 0)
@@ -169,6 +214,7 @@ public class MovieDetails extends AppCompatActivity
         cursor.close();
         return true;
     }
+
 
 
     /*
