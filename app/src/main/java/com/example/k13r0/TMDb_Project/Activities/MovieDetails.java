@@ -186,7 +186,7 @@ public class MovieDetails extends AppCompatActivity
         String posterPath = movie.GetPosterPath();
         String backdropPath = movie.GetBackdropPath();
 
-        DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd");
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         String releaseDate = dateFormat.format(movie.GetReleaseDate());
 
         //Check if movie is already in database.

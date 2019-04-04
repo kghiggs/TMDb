@@ -46,18 +46,19 @@ public class Movie implements Parcelable
 
     private String overview;
     public String GetOverview() { return this.overview; }
+    public void SetOverview(String newOverview) {this.overview = newOverview; }
 
     private String posterPath;
     public String GetPosterPath() { return this.posterPath; }
+    public void SetPosterPath(String newPosterPath) {this.posterPath = newPosterPath; }
 
     private String backdropPath;
     public String GetBackdropPath() { return this.backdropPath; }
+    public void SetBackdropPath(String newBackdropPath) { this.backdropPath = newBackdropPath; }
 
     private Date releaseDate;
     public Date GetReleaseDate() { return this.releaseDate; }
-
-    private boolean adult;
-    public boolean GetAdult() { return this.adult; }
+    public void SetReleaseDate(Date newDate) { this.releaseDate = newDate; }
 
     /*
      * Constructor	: Movie()
@@ -71,7 +72,6 @@ public class Movie implements Parcelable
         posterPath = null;
         backdropPath = null;
         releaseDate = null;
-        adult = false;
     }
 
     /*
@@ -88,9 +88,7 @@ public class Movie implements Parcelable
             overview = details.getString("overview");
             posterPath = details.getString("poster_path");
             backdropPath = details.getString("backdrop_path");
-            releaseDate = new SimpleDateFormat("yyyy-MM-DD").parse(details.getString("release_date"));
-            adult = details.getBoolean("adult");
-
+            releaseDate = new SimpleDateFormat("yyyy-MM-dd").parse(details.getString("release_date"));
         }
         catch (JSONException exception)
         {
