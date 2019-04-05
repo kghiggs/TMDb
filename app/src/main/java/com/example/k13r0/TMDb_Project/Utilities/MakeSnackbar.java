@@ -1,8 +1,8 @@
 /*
  *
  * Author		: Kieron Higgs
- * Date			: Jan. 25, 2019
- * Project		: Assignment 1
+ * Date			: Apr. 5th, 2019
+ * Project		: Assignment 2
  * File			: MakeSnackbar.java
  * Description	: Contains a short method used to create Snackbars.
  */

@@ -1,8 +1,8 @@
 /*
  *
  * Author		: Kieron Higgs
- * Date			: Jan. 31, 2019
- * Project		: Assignment 1
+ * Date			: Apr. 5th, 2019
+ * Project		: Assignment 2
  * File			: SearchResults.java
  * Description	: Contains the code which facilitates displaying a list of search results.
  */

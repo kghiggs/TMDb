@@ -1,7 +1,7 @@
 /*
  *
  * Author		: Arie Kraayenbrink
- * Date			: April, 2019
+ * Date			: Apr. 5th, 2019
  * Project		: Assignment 2
  * File			: FavMovies.java
  * Description	: This is where the column names for the favourite movies database are listed.

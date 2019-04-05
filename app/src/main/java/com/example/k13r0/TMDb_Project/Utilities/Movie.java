@@ -1,8 +1,8 @@
 /*
  *
  * Author		: Kieron Higgs
- * Date			: Jan. 25, 2019
- * Project		: Assignment 1
+ * Date			: Apr. 5th, 2019
+ * Project		: Assignment 2
  * File			: Movie.java
  * Description	: Models a movie onto a Java object, including methods for different types of queries for movies.
  */

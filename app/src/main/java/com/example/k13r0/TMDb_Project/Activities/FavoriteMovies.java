@@ -1,8 +1,8 @@
 /*
  *
  * Author		: Kieron Higgs, Bailey Mills
- * Date			: Jan. 25, 2019
- * Project		: Assignment 1
+ * Date			: Apr. 5th, 2019
+ * Project		: Assignment 2
  * File			: FavoriteMovies.java
  * Description	: Contains the code which generates a page for a single random movie, including title, overview, and poster image.
  */
@@ -10,26 +10,20 @@
 package com.example.k13r0.TMDb_Project.Activities;
 
 import android.content.Context;
-import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.widget.ListView;
 
 import com.example.k13r0.TMDb_Project.FavMoviesDBHelper;
 import com.example.k13r0.TMDb_Project.Utilities.Movie;
 import com.example.k13r0.TMDb_Project.Utilities.MovieAdapter;
 import com.example.k13r0.TMDb_Project.R;
-
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 
 /*
  * Class		: FavoriteMovies
- * Description	:
+ * Description	: The FavoriteMovies class enables the Favorite Movies activity used to display the SQLite data.
  */
 public class FavoriteMovies extends AppCompatActivity {
     private Context context;

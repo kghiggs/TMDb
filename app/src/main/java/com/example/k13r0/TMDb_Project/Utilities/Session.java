@@ -1,8 +1,8 @@
 /*
  *
  * Author		: Kieron Higgs
- * Date			: Jan. 24, 2019
- * Project		: Assignment 1
+ * Date			: Apr. 5th, 2019
+ * Project		: Assignment 2
  * File			: Session.java
  * Description	: Code used to instigate guest sessions on TMDb.org, using a freely available developer API key.
  */

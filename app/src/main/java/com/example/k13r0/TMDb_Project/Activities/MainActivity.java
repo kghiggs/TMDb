@@ -1,14 +1,13 @@
 /*
  *
  * Author		: Kieron Higgs
- * Date			: Jan. 25, 2019
- * Project		: Assignment 1
+ * Date			: Apr. 5th, 2019
+ * Project		: Assignment 2
  * File			: MainActivity.java
  * Description	: The main page of the TMDb app. Displays buttons to test methods for finding movies based on different criteria.
  */
 
 package com.example.k13r0.TMDb_Project.Activities;
-
 import android.content.res.Resources;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -16,12 +15,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.app.Activity;
 import android.view.View;
-
 import android.widget.Button;
-
 import com.android.volley.toolbox.Volley;
 import com.android.volley.RequestQueue;
-
 import com.example.k13r0.TMDb_Project.Utilities.Movie;
 import com.example.k13r0.TMDb_Project.Utilities.Session;
 import com.example.k13r0.TMDb_Project.R;

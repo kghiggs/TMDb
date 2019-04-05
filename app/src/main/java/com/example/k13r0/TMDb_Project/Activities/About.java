@@ -1,10 +1,10 @@
 /*
  *
  * Author		: Kyle Horsley
- * Date			: Feb. 3rd, 2019
- * Project		: Assignment 1
+ * Date			: Apr. 5th, 2019
+ * Project		: Assignment 2
  * File			: About.java
- * Description	:
+ * Description	: Generates an "About" page containing details about the app and a button linking to the TMDb website.
  */
 
 package com.example.k13r0.TMDb_Project.Activities;
@@ -22,15 +22,15 @@ import com.example.k13r0.TMDb_Project.R;
 
 /*
  * Class		: About
- * Description	:
+ * Description	: The About class for creating the About page.
  */
 public class About extends AppCompatActivity implements View.OnClickListener
 {
-
     private Button tmdbButton;
+
     /*
      * Function		: onCreate
-     * Description	:
+     * Description	: Creates the About page.
      * Parameters	: Bundle savedInstanceState
      * Returns		: N/A
      */
@@ -53,6 +53,12 @@ public class About extends AppCompatActivity implements View.OnClickListener
         tmdbButton.setOnClickListener(this);
     }
 
+    /*
+     * Function		: onClick
+     * Description	: Launches the web browser to the TMDb website when pressed.
+     * Parameters	: View v
+     * Returns		: N/A
+     */
     @Override
     public void onClick(View v)
     {

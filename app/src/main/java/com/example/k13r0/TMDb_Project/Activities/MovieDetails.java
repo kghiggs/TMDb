@@ -1,3 +1,12 @@
+/*
+ *
+ * Author		: Kieron Higgs, Bailey Mills, Arie Kraayenbrink
+ * Date			: Apr. 5th, 2019
+ * Project		: Assignment 2
+ * File			: MovieDetails.java
+ * Description	: The "Detail" page used in the TMDb app to display a single movie's attributes.
+ */
+
 package com.example.k13r0.TMDb_Project.Activities;
 
 import android.app.ActionBar;
@@ -7,38 +16,27 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.Color;
-import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
-import android.media.Image;
 import android.os.Bundle;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.View;
-import android.view.ViewTreeObserver;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.android.volley.RequestQueue;
-import com.android.volley.toolbox.Volley;
 import com.example.k13r0.TMDb_Project.FavMovies;
 import com.example.k13r0.TMDb_Project.FavMoviesDBHelper;
 import com.example.k13r0.TMDb_Project.R;
 import com.example.k13r0.TMDb_Project.Utilities.Session;
 import com.example.k13r0.TMDb_Project.Utilities.Movie;
-import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 import com.squareup.picasso.Target;
-
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.Date;
-
-import static com.example.k13r0.TMDb_Project.Utilities.MakeSnackbar.ShowSnackbar;
 
 public class MovieDetails extends AppCompatActivity
 {
@@ -46,23 +44,17 @@ public class MovieDetails extends AppCompatActivity
     private Context context;
     private RequestQueue requestQueue;
     private Session guestSession;
-
     private TextView txtTitle;
     private TextView txtDescription;
     private ImageView imgPoster;
     private ImageView imgBackground;
-
     private ConstraintLayout screenBackground;
-
-    private ScrollView scroller;
-
     private int backgroundColour;
     Button buttonAddFav;
 
-
     /*
-     * Function		: onCreate
-     * Description	: 
+     * Function		: onCreate()
+     * Description	: Creates the MovieDetails page and activity.
      * Parameters	: Bundle savedInstanceState
      * Returns		: N/A
      */
@@ -114,11 +106,15 @@ public class MovieDetails extends AppCompatActivity
         }
         });
 
-        LoadRandomMovie(selectedMovie);
+        LoadMovie(selectedMovie);
     }
 
-
-
+    /*
+     * Function		: UpdateButtonText
+     * Description	: Changes whether the MovieDetails button adds or removes the given movie from Favorites depending on whether it is pre-existing.
+     * Parameters	: Bundle savedInstanceState
+     * Returns		: N/A
+     */
     private void UpdateButtonText(boolean inDB)
     {
         if (inDB){
@@ -165,8 +161,6 @@ public class MovieDetails extends AppCompatActivity
         return result;
     }
 
-
-
     /*
      * Function		: addItem()
      * Description	: Adds a movie title to the database
@@ -180,7 +174,6 @@ public class MovieDetails extends AppCompatActivity
         CharSequence saveMessage = "Movie saved to favourites";
         int duration = Toast.LENGTH_SHORT;
 
-        //String name = txtTitle.getText().toString();
         String name = movie.GetTitle();
         String overview = movie.GetOverview();
         String posterPath = movie.GetPosterPath();
@@ -190,9 +183,6 @@ public class MovieDetails extends AppCompatActivity
         String releaseDate = dateFormat.format(movie.GetReleaseDate());
 
         //Check if movie is already in database.
-//        boolean exists = CheckDataExists(FavMovies.MovieEntry.TABLE_NAME, FavMovies.MovieEntry.COLUMN_NAME, name);
-//        Toast.makeText(context, String.valueOf(exists), duration).show();
-
         if(1 == 2)  // Todo: fix this
         {
             saveMessage = "Movie already in favourites";
@@ -219,7 +209,6 @@ public class MovieDetails extends AppCompatActivity
             saveMessage = "Error: Failed to save, no movie name provided";
             duration = Toast.LENGTH_LONG;
         }
-
         Toast.makeText(context, saveMessage, duration).show();
     }
 
@@ -247,20 +236,17 @@ public class MovieDetails extends AppCompatActivity
             cursor.close();
             return false;
         }
-
         cursor.close();
         return true;
     }
 
-
-
     /*
-     * Function		:
-     * Description	:
+     * Function		: LoadMovie()
+     * Description	: Loads a movie's details into a movie object, including the images.
      * Parameters	: Movie movie : the movie to load the details of into the page
      * Returns		: N/A
      */
-    private void LoadRandomMovie(Movie movie){
+    private void LoadMovie(Movie movie){
         txtTitle.setText(movie.GetTitle());
         txtDescription.setText(movie.GetOverview());
 
@@ -301,7 +287,6 @@ public class MovieDetails extends AppCompatActivity
             imgPoster.setLayoutParams(lp);
         }
 
-
         if (imageToGetColourFrom != null){
             Target target = new Target() {
                 @Override
@@ -326,14 +311,23 @@ public class MovieDetails extends AppCompatActivity
         }
     }
 
-
-    // https://stackoverflow.com/questions/4672271/reverse-opposing-colors
+    /*
+     * Function		: GetContrastColor()
+     * Description	: Retrieves the contrasting color for displaying movie details pages properly. (https://stackoverflow.com/questions/4672271/reverse-opposing-colors)
+     * Parameters	: Bundle savedInstanceState
+     * Returns		: N/A
+     */
     public static boolean GetContrastColor(Color color) {
         double y = (299 * color.red() + 587 * color.green() + 114 * color.blue()) / 1000;
         return y >= 128 ? true : false;
     }
 
-
+    /*
+     * Function		: GetAverageColor()
+     * Description	: Generates the average color of a poster image to make the UI more fitting.
+     * Parameters	: Bitmap bitmap
+     * Returns		: N/A
+     */
     public static int GetAverageColour (Bitmap bitmap){
         int r = 0;
         int g = 0;

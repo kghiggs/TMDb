@@ -1,8 +1,8 @@
 /*
  *
  * Author		: Kieron Higgs
- * Date			: Jan. 25, 2019
- * Project		: Assignment 1
+ * Date			: Apr. 5th, 2019
+ * Project		: Assignment 2
  * File			: MovieAdapter.java
  * Description	: The adapter used to convert JSON into Movie objects held within ArrayLists and display them.
  */
