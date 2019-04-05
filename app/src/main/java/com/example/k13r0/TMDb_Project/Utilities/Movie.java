@@ -8,6 +8,7 @@
  */
 
 package com.example.k13r0.TMDb_Project.Utilities;
+
 import android.os.Parcelable;
 import android.os.Parcel;
 import android.app.Activity;
@@ -45,18 +46,19 @@ public class Movie implements Parcelable
 
     private String overview;
     public String GetOverview() { return this.overview; }
+    public void SetOverview(String newOverview) {this.overview = newOverview; }
 
     private String posterPath;
     public String GetPosterPath() { return this.posterPath; }
+    public void SetPosterPath(String newPosterPath) {this.posterPath = newPosterPath; }
 
     private String backdropPath;
     public String GetBackdropPath() { return this.backdropPath; }
+    public void SetBackdropPath(String newBackdropPath) { this.backdropPath = newBackdropPath; }
 
-    private String releaseDate;
-    public String GetReleaseDate() { return this.releaseDate; }
-
-    private boolean adult;
-    public boolean GetAdult() { return this.adult; }
+    private Date releaseDate;
+    public Date GetReleaseDate() { return this.releaseDate; }
+    public void SetReleaseDate(Date newDate) { this.releaseDate = newDate; }
 
     /*
      * Constructor	: Movie()
@@ -70,7 +72,6 @@ public class Movie implements Parcelable
         posterPath = null;
         backdropPath = null;
         releaseDate = null;
-        adult = false;
     }
 
     /*
@@ -87,14 +88,16 @@ public class Movie implements Parcelable
             overview = details.getString("overview");
             posterPath = details.getString("poster_path");
             backdropPath = details.getString("backdrop_path");
-            releaseDate = details.getString("release_date");
-            adult = details.getBoolean("adult");
-
+            releaseDate = new SimpleDateFormat("yyyy-MM-dd").parse(details.getString("release_date"));
         }
         catch (JSONException exception)
         {
             ShowSnackbar(context.getString(R.string.movie_detail_json_ERR), ((Activity)context).getWindow().findViewById(android.R.id.content));
             Log.d(context.getString(R.string.movie_detail_json_ERR), exception.toString());
+        }
+        catch (ParseException exception)
+        {
+            Log.d(context.getString(R.string.movie_detail_parse_ERR), exception.toString());
         }
     }
 
@@ -251,7 +254,7 @@ public class Movie implements Parcelable
         parcel.writeString(overview);
         parcel.writeString(posterPath);
         parcel.writeString(backdropPath);
-        parcel.writeString(releaseDate);
+        parcel.writeLong(releaseDate.getTime());
     }
 
     protected Movie(Parcel in) {
@@ -260,7 +263,7 @@ public class Movie implements Parcelable
         overview = in.readString();
         posterPath = in.readString();
         backdropPath = in.readString();
-        releaseDate = in.readString();
+        releaseDate = new Date(in.readLong());
     }
 
 

@@ -14,13 +14,18 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.widget.ListView;
 
 import com.example.k13r0.TMDb_Project.FavMoviesDBHelper;
 import com.example.k13r0.TMDb_Project.Utilities.Movie;
 import com.example.k13r0.TMDb_Project.Utilities.MovieAdapter;
 import com.example.k13r0.TMDb_Project.R;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 /*
  * Class		: FavoriteMovies
@@ -48,12 +53,23 @@ public class FavoriteMovies extends AppCompatActivity {
         FavMoviesDBHelper dbHelper = new FavMoviesDBHelper(this);
         database = dbHelper.getReadableDatabase();
         ArrayList<Movie> favoritesArray = new ArrayList<>();
-        String query = "SELECT name FROM favMovies";
+        String query = "SELECT name, overview, posterPath, backdropPath, releaseDate FROM favMovies";
         Cursor cursor = database.rawQuery(query,null);
-        while (cursor.moveToNext()){
-            Movie favorite = new Movie();
-            favorite.SetTitle(cursor.getString(cursor.getColumnIndex("name")));
-            favoritesArray.add(favorite);
+        try
+        {
+            while (cursor.moveToNext()){
+                Movie favorite = new Movie();
+                favorite.SetTitle(cursor.getString(cursor.getColumnIndex("name")));
+                favorite.SetOverview(cursor.getString(cursor.getColumnIndex("overview")));
+                favorite.SetPosterPath(cursor.getString(cursor.getColumnIndex("posterPath")));
+                favorite.SetBackdropPath(cursor.getString(cursor.getColumnIndex("backdropPath")));
+                favorite.SetReleaseDate(new SimpleDateFormat("yyyy-MM-dd").parse(cursor.getString(cursor.getColumnIndex("releaseDate"))));
+                favoritesArray.add(favorite);
+            }
+        }
+        catch (ParseException exception)
+        {
+            Log.d(context.getString(R.string.movie_detail_parse_ERR), exception.toString());
         }
 
         movieAdapter = new MovieAdapter(context, R.layout.list_row, favoritesArray);

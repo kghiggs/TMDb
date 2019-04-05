@@ -34,7 +34,9 @@ import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 import com.squareup.picasso.Target;
 
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import static com.example.k13r0.TMDb_Project.Utilities.MakeSnackbar.ShowSnackbar;
 
@@ -55,6 +57,8 @@ public class MovieDetails extends AppCompatActivity
     private ScrollView scroller;
 
     private int backgroundColour;
+    Button buttonAddFav;
+
 
     /*
      * Function		: onCreate
@@ -68,7 +72,7 @@ public class MovieDetails extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_movie_details);
         Bundle data = getIntent().getExtras();
-        Movie selectedMovie = (Movie) data.getParcelable("selectedMovie");
+        final Movie selectedMovie = (Movie) data.getParcelable("selectedMovie");
 
         txtTitle = findViewById(R.id.txtTitle);
         txtDescription = findViewById(R.id.txtDescription);
@@ -80,15 +84,85 @@ public class MovieDetails extends AppCompatActivity
         FavMoviesDBHelper dbHelper = new FavMoviesDBHelper(this);
         mDatabase = dbHelper.getWritableDatabase();
 
-        Button buttonAddFav = findViewById(R.id.btnFav);
+        buttonAddFav = findViewById(R.id.btnFav);
+
+        // Update button text on load
+        UpdateButtonText(CheckDataExists(FavMovies.MovieEntry.TABLE_NAME, FavMovies.MovieEntry.COLUMN_NAME, selectedMovie.GetTitle()));
+
         buttonAddFav.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                addItem();
+        @Override
+        public void onClick(View v) {
+
+            boolean inDB = CheckDataExists(FavMovies.MovieEntry.TABLE_NAME, FavMovies.MovieEntry.COLUMN_NAME, selectedMovie.GetTitle());
+
+            // Todo: check if in database
+
+            //Check if movie is already saved.
+            if (inDB)
+            {
+                //remove the movie
+                deleteItem(selectedMovie);
+
             }
+            else
+            {
+                //add the movie
+                addItem(selectedMovie);
+            }
+
+            UpdateButtonText(CheckDataExists(FavMovies.MovieEntry.TABLE_NAME, FavMovies.MovieEntry.COLUMN_NAME, selectedMovie.GetTitle()));
+        }
         });
 
         LoadRandomMovie(selectedMovie);
+    }
+
+
+
+    private void UpdateButtonText(boolean inDB)
+    {
+        if (inDB){
+            buttonAddFav.setText("Remove from favourites");
+        }
+        else{
+            //Reset button text
+            buttonAddFav.setText(getString(R.string.add_to_favourites));
+        }
+    }
+
+
+    /*
+     * Function		: deleteItem()
+     * Description	: Removes a movie from the database
+     * Author       : Arie
+     * Parameters	: Movie movie : The movie object
+     * Returns		: N/A
+     */
+    private boolean deleteItem(Movie selectedMovie) {
+        boolean result = false;
+
+        String query = "SELECT " +
+                FavMovies.MovieEntry._ID +
+                ", " + FavMovies.MovieEntry.COLUMN_NAME +
+                ", " + FavMovies.MovieEntry.COLUMN_OVERVIEW +
+                ", " + FavMovies.MovieEntry.COLUMN_POSTER_PATH +
+                ", " + FavMovies.MovieEntry.COLUMN_BACKDROP_PATH +
+                ", " + FavMovies.MovieEntry.COLUMN_RELEASE_DATE +
+                " FROM " + FavMovies.MovieEntry.TABLE_NAME +
+                " WHERE " +
+                FavMovies.MovieEntry.COLUMN_NAME + " = '" +
+                selectedMovie.GetTitle() + "';";
+
+        Cursor cursor = mDatabase.rawQuery(query, null);
+
+        if (cursor.moveToFirst())
+        {
+            result = mDatabase.delete(FavMovies.MovieEntry.TABLE_NAME, FavMovies.MovieEntry._ID  + " = " + Integer.parseInt(cursor.getString(0)), null) > 0;    //hope this is right, untested. TODO: check this!
+        }
+
+        cursor.close();
+
+        return result;
     }
 
 
@@ -97,22 +171,29 @@ public class MovieDetails extends AppCompatActivity
      * Function		: addItem()
      * Description	: Adds a movie title to the database
      * Author       : Arie
-     * Parameters	: N/A
+     * Parameters	: Movie movie : The movie object with the data to add to the database.
      * Returns		: N/A
      */
-    private void addItem()
+    private void addItem(Movie movie)
     {
         Context context = getApplicationContext();
         CharSequence saveMessage = "Movie saved to favourites";
         int duration = Toast.LENGTH_SHORT;
 
-        String name = txtTitle.getText().toString();
+        //String name = txtTitle.getText().toString();
+        String name = movie.GetTitle();
+        String overview = movie.GetOverview();
+        String posterPath = movie.GetPosterPath();
+        String backdropPath = movie.GetBackdropPath();
+
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        String releaseDate = dateFormat.format(movie.GetReleaseDate());
 
         //Check if movie is already in database.
-        //boolean exists = CheckDataExists(FavMovies.MovieEntry.TABLE_NAME, FavMovies.MovieEntry.COLUMN_NAME, name);
-        //Toast.makeText(context, String.valueOf(exists), duration).show();
+//        boolean exists = CheckDataExists(FavMovies.MovieEntry.TABLE_NAME, FavMovies.MovieEntry.COLUMN_NAME, name);
+//        Toast.makeText(context, String.valueOf(exists), duration).show();
 
-        if(1 == 2)  //fix this
+        if(1 == 2)  // Todo: fix this
         {
             saveMessage = "Movie already in favourites";
             duration = Toast.LENGTH_LONG;
@@ -120,6 +201,10 @@ public class MovieDetails extends AppCompatActivity
         else if (name.trim().length() != 0){
             ContentValues cv = new ContentValues();
             cv.put(FavMovies.MovieEntry.COLUMN_NAME, name);
+            cv.put(FavMovies.MovieEntry.COLUMN_OVERVIEW, overview);
+            cv.put(FavMovies.MovieEntry.COLUMN_POSTER_PATH, posterPath);
+            cv.put(FavMovies.MovieEntry.COLUMN_BACKDROP_PATH, backdropPath);
+            cv.put(FavMovies.MovieEntry.COLUMN_RELEASE_DATE, releaseDate);
 
             long result = mDatabase.insert(FavMovies.MovieEntry.TABLE_NAME, null, cv);
 
@@ -138,13 +223,23 @@ public class MovieDetails extends AppCompatActivity
         Toast.makeText(context, saveMessage, duration).show();
     }
 
+
+
+    /*
+     * Function		: CheckDataExists(String TableName, String dbField, String fieldValue)
+     * Description	: Checks if a movie is saved in the database
+     * Author       : Arie
+     * Parameters	: String TableName      : The table to check
+     *              : String dbField        : The field column to check
+     *              : String fieldValue     : The field value to look for
+     * Returns		: N/A
+     */
     private boolean CheckDataExists(String TableName, String dbField, String fieldValue)
     {
         String query = "SELECT " + dbField +
                 " FROM " + TableName +
                 " WHERE " +
-                dbField + " = " + fieldValue +
-                ";";
+                dbField + " = '" + fieldValue + "';";
 
         Cursor cursor = mDatabase.rawQuery(query, null);
         if (cursor.getCount() <= 0)
@@ -156,6 +251,7 @@ public class MovieDetails extends AppCompatActivity
         cursor.close();
         return true;
     }
+
 
 
     /*
@@ -238,7 +334,7 @@ public class MovieDetails extends AppCompatActivity
     }
 
 
-    private int GetAverageColour (Bitmap bitmap){
+    public static int GetAverageColour (Bitmap bitmap){
         int r = 0;
         int g = 0;
         int b = 0;
