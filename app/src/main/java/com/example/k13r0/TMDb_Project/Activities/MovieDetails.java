@@ -38,6 +38,10 @@ import com.squareup.picasso.Target;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 
+/*
+ * Class		: MovieDetails
+ * Description	: This class is used to generate movie detail pages.
+ */
 public class MovieDetails extends AppCompatActivity
 {
     private SQLiteDatabase mDatabase;
@@ -82,13 +86,19 @@ public class MovieDetails extends AppCompatActivity
         UpdateButtonText(CheckDataExists(FavMovies.MovieEntry.TABLE_NAME, FavMovies.MovieEntry.COLUMN_NAME, selectedMovie.GetTitle()));
 
         buttonAddFav.setOnClickListener(new View.OnClickListener() {
+
+        /*
+         * Function		: onClick()
+         * Description	: Allows the user to add/remove a movie from the Favorites table/list.
+         * Parameters	: View v
+         * Returns		: N/A
+         */
         @Override
         public void onClick(View v) {
 
             boolean inDB = CheckDataExists(FavMovies.MovieEntry.TABLE_NAME, FavMovies.MovieEntry.COLUMN_NAME, selectedMovie.GetTitle());
 
             // Todo: check if in database
-
             //Check if movie is already saved.
             if (inDB)
             {
@@ -125,7 +135,6 @@ public class MovieDetails extends AppCompatActivity
             buttonAddFav.setText(getString(R.string.add_to_favourites));
         }
     }
-
 
     /*
      * Function		: deleteItem()

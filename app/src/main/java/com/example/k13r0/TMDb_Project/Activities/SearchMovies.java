@@ -7,8 +7,6 @@
  * Description	: This file contains the SearchMovies class. It allows the user to search for a movie.
  */
 
-
-
 package com.example.k13r0.TMDb_Project.Activities;
 
 import android.content.Context;
@@ -26,25 +24,18 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
-
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.Volley;
-
 import com.example.k13r0.TMDb_Project.Utilities.JsonObjectRequest;
 import com.example.k13r0.TMDb_Project.Utilities.Movie;
 import com.example.k13r0.TMDb_Project.Utilities.MovieAdapter;
 import com.example.k13r0.TMDb_Project.Utilities.Session;
 import com.example.k13r0.TMDb_Project.R;
-
-
 import org.json.JSONObject;
-
 import java.util.ArrayList;
-
-
 
 /*
  * Class		: SearchMovies
@@ -55,17 +46,13 @@ public class SearchMovies extends AppCompatActivity implements View.OnClickListe
     private Context context;
     private RequestQueue requestQueue;
     private Session guestSession;
-
     private EditText txtMovieSearch;
     private Button btnSearch;
     private TextView txtResults;
     private String query;
-
     private ListView resultsList;
     private ArrayList<Movie> resultsArray;
     private MovieAdapter movieAdapter;
-
-
 
     /*
      * Function		: onCreate
@@ -93,8 +80,6 @@ public class SearchMovies extends AppCompatActivity implements View.OnClickListe
         btnSearch.setOnClickListener(this);
     }
 
-
-
     /*
      * Function		: onCreateOptionsMenu
      * Description	: on create event handler
@@ -108,8 +93,6 @@ public class SearchMovies extends AppCompatActivity implements View.OnClickListe
         inflater.inflate(R.menu.search_menu, menu);
         return true;
     }
-
-
 
     /*
      * Function		: onOptionsItemSelected
@@ -132,12 +115,7 @@ public class SearchMovies extends AppCompatActivity implements View.OnClickListe
         return super.onOptionsItemSelected(item);
     }
 
-
-
     private TextWatcher searchTextWatcher = new TextWatcher() {
-
-
-
         /*
          * Function		: beforeTextChanged
          * Description	: Event handler, called before text changes.
@@ -146,10 +124,7 @@ public class SearchMovies extends AppCompatActivity implements View.OnClickListe
          */
         @Override
         public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
         }
-
-
 
         /*
          * Function		: onTextChanged
@@ -164,8 +139,6 @@ public class SearchMovies extends AppCompatActivity implements View.OnClickListe
             btnSearch.setEnabled(!searchInput.isEmpty());
         }
 
-
-
         /*
          * Function		: afterTextChanged
          * Description	: Event handler, called after text changes.
@@ -174,11 +147,8 @@ public class SearchMovies extends AppCompatActivity implements View.OnClickListe
          */
         @Override
         public void afterTextChanged(Editable s) {
-
         }
     };
-
-
 
     /*
      * Function		: onClick
@@ -222,8 +192,6 @@ public class SearchMovies extends AppCompatActivity implements View.OnClickListe
         }
     }
 
-
-
     /*
      * Function		: goToMain
      * Description	: Goes to the main activity
@@ -234,8 +202,6 @@ public class SearchMovies extends AppCompatActivity implements View.OnClickListe
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
-
-
 
     /*
      * Function		: goToAbout

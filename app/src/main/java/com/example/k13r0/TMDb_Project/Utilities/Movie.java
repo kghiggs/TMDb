@@ -14,19 +14,15 @@ import android.os.Parcel;
 import android.app.Activity;
 import android.content.Context;
 import android.util.Log;
-
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.example.k13r0.TMDb_Project.R;
 import static com.example.k13r0.TMDb_Project.Utilities.MakeSnackbar.ShowSnackbar;
-
 import org.json.JSONObject;
 import org.json.JSONException;
-
 import java.util.Date;
-import java.util.Random;
 import java.text.SimpleDateFormat;
 import java.text.ParseException;
 
@@ -36,7 +32,6 @@ import java.text.ParseException;
  */
 public class Movie implements Parcelable
 {
-
     private int ID;
     public int GetID() { return this.ID; }
 
@@ -102,7 +97,7 @@ public class Movie implements Parcelable
     }
 
     /*
-     * Constructor	: RetrieveUpcomingMovies()
+     * Function 	: RetrieveUpcomingMovies()
      * Description	: Requests the list of new and upcoming movies from the database
      * Parameters   : final Session guestSession - The session object containing the API key
      *                final RequestQueue requestQueue - The Volley RequestQueue used for sending HTTP messages
@@ -136,7 +131,7 @@ public class Movie implements Parcelable
     }
 
     /*
-     * Constructor	: RetrieveSearchResults()
+     * Function 	: RetrieveSearchResults()
      * Description	: Submits a search query to the database for a response containing a list of related movies.
      * Parameters   : final Session guestSession - The session object containing the API key
      *                final RequestQueue requestQueue - The Volley RequestQueue used for sending HTTP messages
@@ -170,11 +165,22 @@ public class Movie implements Parcelable
         requestQueue.add(requestLatestMovie);
     }
 
+    /*
+     * Function 	: describeContents()
+     * Description	: [fulfills Parcelable requirements]
+     * Return:      : N/A
+     */
     @Override
     public int describeContents() {
         return 0;
     }
 
+    /*
+     * Function	: writeToParcel()
+     * Description	: Writes Movie object data to a parcel to be passed to another activity.
+     * Parameters   : Parcel parcel, int i
+     * Return:      : N/A
+     */
     @Override
     public void writeToParcel(Parcel parcel, int i) {
         parcel.writeInt(ID);
@@ -185,6 +191,12 @@ public class Movie implements Parcelable
         parcel.writeLong(releaseDate.getTime());
     }
 
+    /*
+     * Constructor	: Movie()
+     * Description	: Creates a Movie object from parcel data.
+     * Parameters   : Parcel in
+     * Return:      : N/A
+     */
     protected Movie(Parcel in) {
         ID = in.readInt();
         title = in.readString();
@@ -194,13 +206,24 @@ public class Movie implements Parcelable
         releaseDate = new Date(in.readLong());
     }
 
-
     public static final Creator<Movie> CREATOR = new Creator<Movie>() {
+        /*
+         * Function 	: createFromParcel()
+         * Description	: Creates a Movie object from parcel data.
+         * Parameters   : Parcel in
+         * Return:      : N/A
+         */
         @Override
         public Movie createFromParcel(Parcel in) {
             return new Movie(in);
         }
 
+        /*
+         * Function	: newArray()
+         * Description	: Creates an array of Movie objects.
+         * Parameters   : int size
+         * Return:      : N/A
+         */
         @Override
         public Movie[] newArray(int size) {
             return new Movie[size];

@@ -13,14 +13,12 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.ListView;
-
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.Volley;
 import com.example.k13r0.TMDb_Project.Utilities.MovieAdapter;
 import com.example.k13r0.TMDb_Project.Utilities.Session;
 import com.example.k13r0.TMDb_Project.Utilities.Movie;
 import com.example.k13r0.TMDb_Project.R;
-
 import java.util.ArrayList;
 
 /*

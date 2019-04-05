@@ -1,5 +1,4 @@
 /*
- *
  * Author		: Kieron Higgs
  * Date			: Apr. 5th, 2019
  * Project		: Assignment 2
