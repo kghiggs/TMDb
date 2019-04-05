@@ -9,6 +9,7 @@
 
 package com.example.k13r0.TMDb_Project;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -73,6 +74,7 @@ public class FavMoviesDBHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
+    @SuppressLint("SimpleDateFormat")
     public void loadFavorites(Context context, ArrayList<Movie> favoritesArray)
     {
         String query = "SELECT name, overview, posterPath, backdropPath, releaseDate FROM favMovies";

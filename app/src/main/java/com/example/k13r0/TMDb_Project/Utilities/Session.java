@@ -29,7 +29,7 @@ import static com.example.k13r0.TMDb_Project.Utilities.MakeSnackbar.ShowSnackbar
  * Class		: Session
  * Description	: This class is used to request a session with the database, receive a session token, and store it.
  */
-public class Session extends Activity
+public class Session
 {
     private SharedPreferences sharedPreferences;
 
