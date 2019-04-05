@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
- FILENAME: activity_search.xml
- PROJECT:  PROG3150_MAD - Assignment #1
- BY: Kieron Higgs, Arie Kraayenbrink
- DATE: 01-24-2019
- DESCRIPTION:
+    Author      : Kieron Higgs, Bailey Mills, Arie Kraayenbrink
+    Date	    : Apr. 5th, 2019
+    Project		: Assignment 2
+    File	    : activity_main.xml
+    Description : The search activity used for the TMDb app; includes an EditText widget in addition to buttons and ListView.
 -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"

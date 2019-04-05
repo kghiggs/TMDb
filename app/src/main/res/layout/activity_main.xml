@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
     Author      : Kieron Higgs, Bailey Mills
-    Date	    : Jan. 25th, 2019
-    Project		: Assignment 1
+    Date	    : Apr. 5th, 2019
+    Project		: Assignment 2
     File	    : activity_main.xml
-    Description : Contains the XML code which forms the Main Activity page.
+    Description : The main activity layout with buttons for accessing all of the TMDb's features.
 -->
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"

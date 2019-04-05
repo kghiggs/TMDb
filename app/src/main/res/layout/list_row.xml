@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-    Author      : Kieron Higgs
-    Date	    : Jan. 30th, 2019
-    Project		: Assignment 1
+    Author      : Kieron Higgs, Bailey Mills
+    Date	    : Apr. 5th, 2019
+    Project		: Assignment 2
     File	    : list_row.xml
-    Description : The format for a list item for the TDMb prototype app.
+    Description : The format for a list item in the TMDb app.
 -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"

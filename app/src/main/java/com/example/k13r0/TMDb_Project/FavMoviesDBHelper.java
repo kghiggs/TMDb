@@ -4,10 +4,8 @@
  * Date			: Apr. 5th, 2019
  * Project		: Assignment 2
  * File			: FavMoviesDBHelper.java
- * Description	:
+ * Description	: This class enables the SQLite database for Favorite movies.
  */
-
-
 
 package com.example.k13r0.TMDb_Project;
 
@@ -16,20 +14,15 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
-
 import com.example.k13r0.TMDb_Project.FavMovies.*;
 import com.example.k13r0.TMDb_Project.Utilities.Movie;
-
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
-
 public class FavMoviesDBHelper extends SQLiteOpenHelper {
     public static final String DATABASE_NAME = "movies.db";
     public static final int DATABASE_VERSION = 1;
-
-
 
     /*
      * Function		: FavMoviesDBHelper(Context context)
@@ -41,8 +34,6 @@ public class FavMoviesDBHelper extends SQLiteOpenHelper {
     public FavMoviesDBHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
-
-
 
     /*
      * Function		: onCreate(SQLiteDatabase db)
@@ -66,8 +57,6 @@ public class FavMoviesDBHelper extends SQLiteOpenHelper {
 
         db.execSQL((SQL_CREATE_FAVMOVIES_TABLE));
     }
-
-
 
     /*
      * Function		: onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion)

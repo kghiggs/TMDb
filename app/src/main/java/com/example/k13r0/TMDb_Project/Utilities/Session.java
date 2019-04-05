@@ -14,19 +14,15 @@ import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.app.Activity;
 import android.util.Log;
-
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.example.k13r0.TMDb_Project.R;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.util.ArrayList;
-
 import static com.example.k13r0.TMDb_Project.Utilities.MakeSnackbar.ShowSnackbar;
 
 /*
@@ -139,7 +135,6 @@ public class Session extends Activity
                     }
                 }
         );
-
         requestQueue.add(requestGSID);
     }
 
