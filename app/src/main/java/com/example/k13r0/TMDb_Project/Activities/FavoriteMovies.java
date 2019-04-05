@@ -53,24 +53,7 @@ public class FavoriteMovies extends AppCompatActivity {
         FavMoviesDBHelper dbHelper = new FavMoviesDBHelper(this);
         database = dbHelper.getReadableDatabase();
         ArrayList<Movie> favoritesArray = new ArrayList<>();
-        String query = "SELECT name, overview, posterPath, backdropPath, releaseDate FROM favMovies";
-        Cursor cursor = database.rawQuery(query,null);
-        try
-        {
-            while (cursor.moveToNext()){
-                Movie favorite = new Movie();
-                favorite.SetTitle(cursor.getString(cursor.getColumnIndex("name")));
-                favorite.SetOverview(cursor.getString(cursor.getColumnIndex("overview")));
-                favorite.SetPosterPath(cursor.getString(cursor.getColumnIndex("posterPath")));
-                favorite.SetBackdropPath(cursor.getString(cursor.getColumnIndex("backdropPath")));
-                favorite.SetReleaseDate(new SimpleDateFormat("yyyy-MM-dd").parse(cursor.getString(cursor.getColumnIndex("releaseDate"))));
-                favoritesArray.add(favorite);
-            }
-        }
-        catch (ParseException exception)
-        {
-            Log.d(context.getString(R.string.movie_detail_parse_ERR), exception.toString());
-        }
+        dbHelper.loadFavorites(context, favoritesArray);
 
         movieAdapter = new MovieAdapter(context, R.layout.list_row, favoritesArray);
         favoritesList = findViewById(android.R.id.list);

@@ -12,11 +12,17 @@
 package com.example.k13r0.TMDb_Project;
 
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
+
 import com.example.k13r0.TMDb_Project.FavMovies.*;
 import com.example.k13r0.TMDb_Project.Utilities.Movie;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 
 
 public class FavMoviesDBHelper extends SQLiteOpenHelper {
@@ -76,5 +82,29 @@ public class FavMoviesDBHelper extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS " + MovieEntry.TABLE_NAME);
         onCreate(db);
+    }
+
+    public void loadFavorites(Context context, ArrayList<Movie> favoritesArray)
+    {
+        String query = "SELECT name, overview, posterPath, backdropPath, releaseDate FROM favMovies";
+        Cursor cursor = getReadableDatabase().rawQuery(query,null);
+
+        try
+        {
+            while (cursor.moveToNext()){
+                Movie favorite = new Movie();
+                favorite.SetTitle(cursor.getString(cursor.getColumnIndex("name")));
+                favorite.SetOverview(cursor.getString(cursor.getColumnIndex("overview")));
+                favorite.SetPosterPath(cursor.getString(cursor.getColumnIndex("posterPath")));
+                favorite.SetBackdropPath(cursor.getString(cursor.getColumnIndex("backdropPath")));
+                favorite.SetReleaseDate(new SimpleDateFormat("yyyy-MM-dd").parse(cursor.getString(cursor.getColumnIndex("releaseDate"))));
+                favoritesArray.add(favorite);
+            }
+        }
+        catch (
+                ParseException exception)
+        {
+            Log.d(context.getString(R.string.movie_detail_parse_ERR), exception.toString());
+        }
     }
 }

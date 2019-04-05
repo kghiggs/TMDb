@@ -22,6 +22,7 @@ import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
@@ -34,7 +35,7 @@ public class MovieAdapter extends ArrayAdapter<Movie>
     Context context;
     int resource;
     ArrayList<Movie> movies;
-
+    DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 
     /*
      * Adapter  	: MovieAdapter()
@@ -104,7 +105,7 @@ public class MovieAdapter extends ArrayAdapter<Movie>
 
         if (movie.GetReleaseDate() != null)
         {
-            moreInfo.setText(movie.GetReleaseDate());
+            moreInfo.setText(dateFormat.format(movie.GetReleaseDate()));
         }
 
         if (movie.GetPosterPath() != null)
